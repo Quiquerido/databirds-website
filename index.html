@@ -194,9 +194,24 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       line-height: 1.4;
-      color: #0b1b28;
+      color: #f2f2f2;
       position: relative;
       top: var(--banner-title-shift);
+      opacity: 0;
+    }
+
+    .right-bar-top-fixed {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      color: #0b1b28;
+      position: fixed;
+      top: calc(12mm + 8mm + 4mm);
+      left: calc(100% - 68mm);
+      text-align: left;
+      z-index: 99999999;
     }
 
     .right-bar-bird-title {
@@ -301,9 +316,12 @@
 
   <div class="top-bar"></div>
 
+  <div class="right-bar-top-fixed">
+    Transforming Data<br>into Business Value
+  </div>
+
   <div class="page-wrapper">
 
-    <!-- UPDATED HERE -->
     <a 
       href="https://calendly.com/quique-databirds/30min"
       class="meeting-button"
@@ -312,7 +330,6 @@
     >
       Book a Meeting
     </a>
-    <!-- END UPDATE -->
 
     <div class="content-area">
 
@@ -340,7 +357,7 @@
         </div>
 
         <div class="text-content">
-          <p>Hey! I’m Enrique, a seasoned business leader and data scientist. With over a decade leading global sales, partnerships, and tech-product growth across 30+ countries, I leverage that strategic experience to solve business challenges.</p>
+          <p>Hey! I'm Enrique, a seasoned business leader and data scientist. With over a decade leading global sales, partnerships, and tech-product growth across 30+ countries, I leverage that strategic experience to solve business challenges.</p>
 
           <p>I blend rigorous analysis, statistical modeling, and machine learning to achieve measurable growth and meaningful impact – bridging science and business to turn complex data into clear, actionable insights.</p>
         </div>
@@ -394,17 +411,25 @@
   <script>
     window.addEventListener("load", function() {
       const btn = document.querySelector(".meeting-button");
+      const triangle = document.querySelector(".mid-line-copy");
 
-      // Blink once at 4 seconds
+      function blinkBoth() {
+        btn.classList.add("blink-now");
+        triangle.classList.add("blink-now");
+        setTimeout(() => {
+          btn.classList.remove("blink-now");
+          triangle.classList.remove("blink-now");
+        }, 1200);
+      }
+
+      // Blink once at 10 seconds
       setTimeout(() => {
-        btn.classList.add("blink-now");
-        setTimeout(() => btn.classList.remove("blink-now"), 1200);
-      }, 4000);
-
-      // Then blink every 10 seconds
-      setInterval(() => {
-        btn.classList.add("blink-now");
-        setTimeout(() => btn.classList.remove("blink-now"), 1200);
+        blinkBoth();
+        
+        // Then start repeating every 15 seconds
+        setInterval(() => {
+          blinkBoth();
+        }, 15000);
       }, 10000);
     });
   </script>
