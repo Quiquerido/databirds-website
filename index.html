@@ -16,12 +16,12 @@
       --page-top-shift: -5mm;
       --mid-line-left: 15mm;
       --mid-line-right: -1cm;
-      --mid-line-top: calc(40px - 3.2cm);
+      --mid-line-top: calc(40px - 2.2cm - 0.2cm - 0.3cm - 0.3cm - 0.2cm);
       --mid-line-height: 0.5cm;
-      --photo-block-left: calc(29.8px + 21.5mm);
-      --photo-block-top: calc(-3.7em + 13mm);
-      --text-block-top: calc(-4.8em + 13mm);
-      --text-block-left: calc(34px + 11mm);
+      --photo-block-left: calc(26px + 2cm + 3.8px - 19mm + 13mm + 1mm + 8mm - 2.5mm + 1mm);
+      --photo-block-top: calc(-3.7em + 0.9cm + 0.4cm);
+      --text-block-top: calc(-4.8em + 0.9cm + 0.4cm);
+      --text-block-left: calc(1.7cm + 7.5px - 22.5px - 18.9px + 13mm - 1cm - 7mm - 2mm);
       --right-bar-width: 7.5cm;
       --body-font-size: 1.024rem;
       --body-line-height: 1.6;
@@ -92,10 +92,10 @@
       font-size: 1.14rem;
     }
 
-    .nav-links a:nth-child(1) { margin-left: calc(1cm - 26.5px); }
-    .nav-links a:nth-child(2) { margin-left: calc(2cm - 26.5px); }
-    .nav-links a:nth-child(3) { margin-left: calc(3cm - 63px); }
-    .nav-links a:nth-child(4) { margin-left: calc(41.1px + 7.56px); }
+    .nav-links a:nth-child(1) { margin-left: calc(1cm - 7.6px - 18.9px); }
+    .nav-links a:nth-child(2) { margin-left: calc(2cm - 7.6px - 18.9px); }
+    .nav-links a:nth-child(3) { margin-left: calc(3cm - 36.5px - 7.6px - 18.9px); }
+    .nav-links a:nth-child(4) { margin-left: calc(60px - 18.9px + 7.56px); }
 
     .mid-line {
       position: relative;
@@ -208,7 +208,7 @@
       line-height: 1.4;
       color: #0b1b28;
       position: fixed;
-      top: calc(24mm);
+      top: calc(12mm + 8mm + 4mm);
       left: calc(100% - 68mm);
       text-align: left;
       z-index: 99999999;
@@ -436,4 +436,3 @@
 
 </body>
 </html>
-
