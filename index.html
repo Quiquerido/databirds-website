@@ -9,306 +9,277 @@
 
   <style>
     :root {
-      --page-bg: #0b1b28;
-      --accent: #f2f2f2;
-      --accent-dark: #1f6f89;
-      --font-main: 'Poppins', sans-serif;
-      --page-top-shift: -5mm;
-      --mid-line-left: 15mm;
-      --mid-line-right: -1cm;
-      --mid-line-top: calc(40px - 2.2cm - 0.2cm - 0.3cm - 0.3cm - 0.2cm);
-      --mid-line-height: 0.5cm;
-      --photo-block-left: calc(26px + 2cm + 3.8px - 19mm + 13mm + 1mm + 8mm - 2.5mm + 1mm);
-      --photo-block-top: calc(-3.7em + 0.9cm + 0.4cm);
-      --text-block-top: calc(-4.8em + 0.9cm + 0.4cm);
-      --text-block-left: calc(1.7cm + 7.5px - 22.5px - 18.9px + 13mm - 1cm - 7mm - 2mm);
-      --right-bar-width: 7.5cm;
-      --body-font-size: 1.024rem;
-      --body-line-height: 1.6;
-      --vertical-triangle-left: -15mm;
-      --vertical-triangle-width: 0.5cm;
-      --triangle-dot-size: 10mm;
-      --triangle-dot-left: -5mm;
-      --banner-title-shift: -5mm;
+      --page-bg:#0b1b28; --accent:#f2f2f2; --accent-dark:#1f6f89;
+      --font-main:'Poppins',sans-serif;
+      --page-top-shift:-5mm;
+      --mid-line-left:15mm; --mid-line-right:-1cm;
+      --mid-line-top:calc(40px - 2.2cm - .2cm - .3cm - .3cm - .2cm);
+      --mid-line-height:.5cm;
+      --photo-block-left:calc(26px + 2cm + 3.8px - 19mm + 13mm + 1mm + 8mm - 2.5mm + 1mm);
+      --photo-block-top:calc(-3.7em + .9cm + .4cm);
+      --text-block-top:calc(-4.8em + .9cm + .4cm);
+      --text-block-left:calc(1.7cm + 7.5px - 22.5px - 18.9px + 13mm - 1cm - 7mm - 2mm);
+      --right-bar-width:7.5cm;
+      --body-font-size:1.024rem; --body-line-height:1.6;
+      --vertical-triangle-left:-15mm; --vertical-triangle-width:.5cm;
+      --triangle-dot-size:10mm; --triangle-dot-left:-5mm;
+      --banner-title-shift:-5mm;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: var(--page-bg);
-      font-family: var(--font-main);
-      color: #ffffff;
-      height: 100%;
+    html,body{
+      margin:0;padding:0;
+      background:var(--page-bg);
+      font-family:var(--font-main);
+      color:#fff;height:100%;
     }
 
-    .page-wrapper {
-      display: flex;
-      flex-direction: row;
-      min-height: 100vh;
-      margin-top: var(--page-top-shift);
-      position: relative;
+    .page-wrapper{
+      display:flex;flex-direction:row;
+      min-height:100vh;
+      margin-top:var(--page-top-shift);
+      position:relative;
     }
 
-    .top-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 12mm;
-      background-color: #f2f2f2;
-      z-index: 9999999;
+    .top-bar{
+      position:absolute;top:0;left:0;
+      width:100%;height:12mm;
+      background:#f2f2f2;
+      z-index:9999999;
     }
 
-    .content-area {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      z-index: 1;
-      position: relative;
+    .content-area{
+      flex:1;display:flex;flex-direction:column;
+      z-index:1;position:relative;
     }
 
-    .navbar {
-      display: flex;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: var(--page-bg);
+    .navbar{
+      display:flex;align-items:center;
+      padding:20px 40px;
+      background:var(--page-bg);
     }
 
-    .navbar img.logo {
-      height: 242px;
-      margin-right: 40px;
-      margin-left: 3mm;
-      margin-top: -3mm;
+    .logo-wrapper {
+      position:relative;
+      display:inline-block;
+      margin-right:40px;
+      margin-left:3mm;
+      margin-top:-3mm;
     }
 
-    .nav-links {
-      margin-left: 1cm;
+    .logo {
+      height:242px;
+      display:block;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 400;
-      font-size: 1.14rem;
+    .logo-overlay {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:calc(100% - 10mm);
+      cursor:pointer;
+      background:transparent;
+      z-index:10;
     }
 
-    .nav-links a:nth-child(1) { margin-left: calc(1cm - 7.6px - 18.9px); }
-    .nav-links a:nth-child(2) { margin-left: calc(2cm - 7.6px - 18.9px); }
-    .nav-links a:nth-child(3) { margin-left: calc(3cm - 36.5px - 7.6px - 18.9px); }
-    .nav-links a:nth-child(4) { margin-left: calc(60px - 18.9px + 7.56px); }
+    .nav-links{margin-left:1cm;}
+    .nav-links a{
+      text-decoration:none;color:#fff;
+      font-weight:400;font-size:1.14rem;
+    }
+    .nav-links a:nth-child(1){margin-left:calc(1cm - 7.6px - 18.9px);}
+    .nav-links a:nth-child(2){margin-left:calc(2cm - 7.6px - 18.9px);}
+    .nav-links a:nth-child(3){margin-left:calc(3cm - 36.5px - 7.6px - 18.9px);}
+    .nav-links a:nth-child(4){margin-left:calc(60px - 18.9px + 7.56px);}
 
-    .mid-line {
-      position: relative;
-      background-color: var(--accent-dark);
-      margin-left: var(--mid-line-left);
-      margin-right: var(--mid-line-right);
-      margin-top: var(--mid-line-top);
-      width: calc(100% - 1mm + 1cm);
-      height: var(--mid-line-height);
-      clip-path: polygon(0% 50%, 100% 0, 100% 100%);
+    .mid-line{
+      position:relative;
+      background:var(--accent-dark);
+      margin-left:var(--mid-line-left);
+      margin-right:var(--mid-line-right);
+      margin-top:var(--mid-line-top);
+      width:calc(100% - 1mm + 1cm);
+      height:var(--mid-line-height);
+      clip-path:polygon(0% 50%,100% 0,100% 100%);
     }
 
-    .triangle-tip-dot {
-      width: var(--triangle-dot-size);
-      height: var(--triangle-dot-size);
-      background-color: var(--accent-dark);
-      border-radius: 50%;
-      position: absolute;
-      left: var(--triangle-dot-left);
-      top: calc(50% - (var(--triangle-dot-size) / 2));
+    .triangle-tip-dot{
+      width:var(--triangle-dot-size);
+      height:var(--triangle-dot-size);
+      background:var(--accent-dark);
+      border-radius:50%;
+      position:absolute;
+      left:var(--triangle-dot-left);
+      top:calc(50% - var(--triangle-dot-size)/2);
     }
 
-    .main-content {
-      display: flex;
-      align-items: flex-start;
-      padding: 40px;
-      max-width: 1200px;
-      margin: auto;
+    .main-content{
+      display:flex;align-items:flex-start;
+      padding:40px;max-width:1200px;margin:auto;
     }
 
-    .photo-with-triangle {
-      position: relative;
-      display: flex;
-      align-items: stretch;
-      margin-right: 40px;
-      margin-left: var(--photo-block-left);
-      margin-top: var(--photo-block-top);
+    .photo-with-triangle{
+      position:relative;
+      display:flex;
+      align-items:stretch;
+      margin-right:40px;
+      margin-left:var(--photo-block-left);
+      margin-top:var(--photo-block-top);
     }
 
-    .vertical-photo-triangle {
-      position: absolute;
-      left: var(--vertical-triangle-left);
-      top: 0;
-      height: 100%;
-      width: var(--vertical-triangle-width);
-      background-color: #ffffff;
-      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    .vertical-photo-triangle{
+      position:absolute;
+      left:var(--vertical-triangle-left);
+      top:0;
+      height:100%;
+      width:var(--vertical-triangle-width);
+      background:#fff;
+      clip-path:polygon(100% 0,0 50%,100% 100%);
     }
 
-    .profile-img {
-      width: 170px;
-      border-radius: 16px;
-      object-fit: cover;
-      clip-path: inset(0 0 0 2px);
-      display: block;
+    .profile-img{
+      width:170px;
+      border-radius:16px;
+      object-fit:cover;
+      clip-path:inset(0 0 0 2px);
+      display:block;
     }
 
-    .text-content {
-      max-width: 564px;
-      text-align: left;
-      margin-top: var(--text-block-top);
-      margin-left: var(--text-block-left);
+    .text-content{
+      max-width:564px;
+      text-align:left;
+      margin-top:var(--text-block-top);
+      margin-left:var(--text-block-left);
     }
 
-    .text-content p {
-      font-size: var(--body-font-size);
-      line-height: var(--body-line-height);
-      margin-bottom: 20px;
-      font-weight: 400;
+    .text-content p{
+      font-size:var(--body-font-size);
+      line-height:var(--body-line-height);
+      margin-bottom:20px;
+      font-weight:400;
     }
 
-    .right-bar {
-      width: var(--right-bar-width);
-      background-color: #f2f2f2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20mm 8mm;
-      box-sizing: border-box;
-      margin-top: -2px;
+    .right-bar{
+      width:var(--right-bar-width);
+      background:#f2f2f2;
+      display:flex;align-items:center;justify-content:center;
+      padding:20mm 8mm;
+      box-sizing:border-box;
+      margin-top:-2px;
     }
 
-    .right-bar-inner {
-      color: #0b1b28;
-      display: flex;
-      flex-direction: column;
-      gap: 8mm;
-      text-align: left;
-      width: 100%;
-      position: relative;
+    .right-bar-inner{
+      color:#0b1b28;
+      display:flex;flex-direction:column;
+      gap:8mm;text-align:left;
+      width:100%;position:relative;
     }
 
-    .right-bar-top {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      line-height: 1.4;
-      color: #f2f2f2;
-      position: relative;
-      top: var(--banner-title-shift);
-      opacity: 0;
+    .right-bar-top{opacity:0;}
+
+    /* TRANSFORMING DATA FIXED + CLICK AREA */
+    .transform-wrapper{
+      position:fixed;
+      top:calc(12mm + 8mm + 4mm - 2mm);
+      left:calc(100% - 68mm - 2mm);
+      padding:2mm;
+      z-index:99999999;
+      pointer-events:none;
+    }
+    .transform-wrapper-inner{
+      position:relative;
+      pointer-events:auto;
+    }
+    .right-bar-top-fixed{
+      font-size:1rem;font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      line-height:1.4;
+      color:#0b1b28;
+    }
+    .transform-overlay{
+      position:absolute;top:0;left:0;
+      width:100%;height:100%;
+      background:transparent;cursor:pointer;
     }
 
-    .right-bar-top-fixed {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      line-height: 1.4;
-      color: #0b1b28;
-      position: fixed;
-      top: calc(12mm + 8mm + 4mm);
-      left: calc(100% - 68mm);
-      text-align: left;
-      z-index: 99999999;
+    .right-bar-bird-title{
+      font-size:1.02rem;font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:3mm;
+      position:relative;
+      top:calc(var(--photo-block-top) + 16mm);
+      width:calc(100% + 1mm);
+      color:#0b1b28;
     }
 
-    .right-bar-bird-title {
-      font-size: 1.02rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 3mm;
-      position: relative;
-      top: calc(var(--photo-block-top) + 16mm);
-      width: calc(100% + 1mm);
-      color: #0b1b28;
+    .right-bar-bird{
+      display:flex;flex-direction:column;
+      gap:2.5mm;margin-top:16mm;
+      font-size:var(--body-font-size);
+      line-height:var(--body-line-height);
+      color:#0b1b28;
+      position:relative;
     }
 
-    .right-bar-bird {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5mm;
-      margin-top: 16mm;
-      font-size: var(--body-font-size);
-      line-height: var(--body-line-height);
-      font-weight: 400;
-      color: #0b1b28;
-      position: relative;
+    .solution-scaling{
+      position:absolute;
+      left:0;margin-top:38mm;
     }
 
-    .bird-line {
-      display: flex;
-      align-items: baseline;
-      gap: 3mm;
+    .birds-wrapper{position:relative;width:100%;}
+    .birds-overlay{
+      position:absolute;top:0;left:0;
+      width:100%;height:100%;
+      cursor:pointer;
+      background:transparent;
+      z-index:10;
     }
 
-    .solution-scaling {
-      position: absolute;
-      left: 0;
-      margin-top: 38mm;
-      font-size: var(--body-font-size);
-      line-height: var(--body-line-height);
-      font-weight: 400;
-      color: #0b1b28;
+    .mid-line-copy{
+      position:absolute;
+      left:var(--mid-line-left);
+      right:var(--mid-line-right);
+      bottom:4mm;
+      width:calc(100% - 1mm + 1cm - 15mm);
+      height:var(--mid-line-height);
+      background:var(--accent-dark);
+      clip-path:polygon(100% 50%,0 0,0 100%);
+      z-index:9999;
     }
 
-    .mid-line-copy {
-      position: absolute;
-      left: var(--mid-line-left);
-      right: var(--mid-line-right);
-      bottom: 4mm;
-      width: calc(100% - 1mm + 1cm - 15mm);
-      height: var(--mid-line-height);
-      background-color: var(--accent-dark);
-      clip-path: polygon(100% 50%, 0 0, 0 100%);
-      z-index: 9999;
+    .meeting-button{
+      position:absolute;
+      right:calc(13mm + 1px);
+      bottom:calc(7mm - 1px);
+      height:12mm;line-height:12mm;
+      padding:0 8mm;
+      background:#fff;color:#0b1b28;
+      border-radius:3mm;border:1px solid #0b1b28;
+      font-size:.99rem;font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:.05em;
+      z-index:999999;
     }
 
-    .meeting-button {
-      position: absolute;
-      z-index: 999999;
-      right: calc(13mm + 1px);
-      bottom: calc(7mm - 1px);
-      height: 12mm;
-      line-height: 12mm;
-      padding: 0 8mm;
-      background-color: #ffffff;
-      color: #0b1b28;
-      border-radius: 3mm;
-      border: 1px solid #0b1b28;
-      font-family: var(--font-main);
-      font-size: 0.99rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      text-decoration: none;
-      text-align: center;
-      letter-spacing: 0.05em;
+    .right-bar-patch{
+      position:fixed;
+      right:0;bottom:0;
+      width:var(--right-bar-width);
+      height:10mm;
+      background:#f2f2f2;
+      z-index:5;
     }
 
-    .right-bar-patch {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      width: var(--right-bar-width);
-      height: 10mm;
-      background-color: #f2f2f2;
-      z-index: 5;
+    @keyframes softBlinkTwice{
+      0%{opacity:1;}25%{opacity:.4;}
+      50%{opacity:1;}75%{opacity:.4;}
+      100%{opacity:1;}
     }
+    .blink-now{animation:softBlinkTwice 1s ease-in-out;}
 
-    /* blink animation */
-    @keyframes softBlinkTwice {
-      0%   { opacity: 1; }
-      25%  { opacity: 0.4; }
-      50%  { opacity: 1; }
-      75%  { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    .blink-now {
-      animation: softBlinkTwice 1s ease-in-out;
-    }
   </style>
 </head>
 
@@ -316,25 +287,30 @@
 
   <div class="top-bar"></div>
 
-  <div class="right-bar-top-fixed">
-    Transforming Data<br>into Business Value
+  <div class="transform-wrapper">
+    <div class="transform-wrapper-inner">
+      <div class="right-bar-top-fixed">
+        Transforming Data<br>into Business Value
+      </div>
+      <a href="#transform" class="transform-overlay"></a>
+    </div>
   </div>
 
   <div class="page-wrapper">
 
-    <a 
-      href="https://calendly.com/quique-databirds/30min"
-      class="meeting-button"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href="https://calendly.com/quique-databirds/30min" class="meeting-button" target="_blank">
       Book a Meeting
     </a>
 
     <div class="content-area">
 
+      <!-- NAVBAR -->
       <div class="navbar">
-        <img src="logo.jpg" alt="Databirds.AI Logo" class="logo">
+        <div class="logo-wrapper">
+          <img src="logo.jpg" class="logo" alt="">
+          <a href="https://databirds.ai" class="logo-overlay"></a>
+        </div>
+
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
@@ -343,17 +319,19 @@
         </div>
       </div>
 
+      <!-- MID LINE -->
       <div class="mid-line">
         <div class="triangle-tip-dot"></div>
       </div>
 
       <div class="mid-line-copy"></div>
 
+      <!-- MAIN CONTENT -->
       <div class="main-content">
 
         <div class="photo-with-triangle">
           <div class="vertical-photo-triangle"></div>
-          <img src="photo.jpg" alt="Quique Photo" class="profile-img">
+          <img src="photo.jpg" alt="" class="profile-img">
         </div>
 
         <div class="text-content">
@@ -366,6 +344,7 @@
 
     </div>
 
+    <!-- RIGHT BAR -->
     <div class="right-bar">
       <div class="right-bar-inner">
 
@@ -373,32 +352,18 @@
           Transforming Data<br>into Business Value
         </div>
 
-        <div>
-          <div class="right-bar-bird-title">
-            The BIRDS Framework
-          </div>
+        <div class="birds-wrapper">
+          <div class="right-bar-bird-title">The BIRDS Framework</div>
 
           <div class="right-bar-bird">
-
-            <div class="bird-line">
-              <span class="bird-text">Business Alignment</span>
-            </div>
-
-            <div class="bird-line">
-              <span class="bird-text">Insight Discovery</span>
-            </div>
-
-            <div class="bird-line">
-              <span class="bird-text">Real-World Modeling</span>
-            </div>
-
-            <div class="bird-line">
-              <span class="bird-text">Decision Enablement</span>
-            </div>
-
+            <div class="bird-line">Business Alignment</div>
+            <div class="bird-line">Insight Discovery</div>
+            <div class="bird-line">Real-World Modeling</div>
+            <div class="bird-line">Decision Enablement</div>
             <div class="solution-scaling">Solution Scaling</div>
-
           </div>
+
+          <a href="#birdsframework" class="birds-overlay"></a>
         </div>
 
       </div>
@@ -408,12 +373,15 @@
 
   <div class="right-bar-patch"></div>
 
+  <div id="transform"></div>
+  <div id="birdsframework"></div>
+
   <script>
-    window.addEventListener("load", function() {
+    window.addEventListener("load", () => {
       const btn = document.querySelector(".meeting-button");
       const triangle = document.querySelector(".mid-line-copy");
 
-      function blinkBoth() {
+      function blinkAll(){
         btn.classList.add("blink-now");
         triangle.classList.add("blink-now");
         setTimeout(() => {
@@ -422,14 +390,9 @@
         }, 1200);
       }
 
-      // Blink once at 10 seconds
       setTimeout(() => {
-        blinkBoth();
-        
-        // Then start repeating every 15 seconds
-        setInterval(() => {
-          blinkBoth();
-        }, 15000);
+        blinkAll();
+        setInterval(blinkAll, 15000);
       }, 10000);
     });
   </script>
