@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting…</title>
+  <title>Opening Calendly...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <a id="autoClick"
-     href="https://calendly.com/quique-databirds/30min"
-     target="_blank"
-     style="display:none;">
-  </a>
   <script>
-    document.getElementById("autoClick").click();
-    window.history.back();
+    // Open Calendly immediately
+    window.open('https://calendly.com/quique-databirds/30min', '_blank');
+    
+    // Go back to previous page
+    setTimeout(() => {
+      window.history.back();
+    }, 100);
   </script>
+  <p style="font-family: Arial; text-align: center; margin-top: 50px;">
+    Opening Calendly... <a href="javascript:history.back()">Click here if you're not redirected</a>
+  </p>
 </body>
 </html>
