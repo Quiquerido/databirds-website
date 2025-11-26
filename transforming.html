@@ -5,18 +5,25 @@
   <title>Redirecting…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    // This runs immediately AFTER the user clicks the overlay link.
-    window.onload = function() {
-      // Open Calendly in a NEW TAB (allowed because the click triggered page load)
-      window.open("https://calendly.com/quique-databirds/30min", "_blank");
-
-      // Send user back to homepage
-      window.location.href = "index.html";
-    };
-  </script>
+  <!-- Redirect BACK to homepage immediately -->
+  <meta http-equiv="refresh" content="0; url=index.html">
 
 </head>
-<body style="background:#0b1b28; margin:0;">
+
+<body>
+
+  <!-- OPEN CALENDLY IN NEW TAB — THIS MUST BE A REAL CLICK -->
+  <a id="autoClick"
+     href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     style="display:none;">
+     Calendly
+  </a>
+
+  <script>
+    // simulate a real click to bypass popup blocking
+    document.getElementById("autoClick").click();
+  </script>
+
 </body>
 </html>
