@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    // Open Calendly in a NEW TAB, then return user to home
+    // This runs immediately AFTER the user clicks the overlay link.
     window.onload = function() {
+      // Open Calendly in a NEW TAB (allowed because the click triggered page load)
       window.open("https://calendly.com/quique-databirds/30min", "_blank");
-      window.location.href = "index.html";   // or "home.html" if you prefer
+
+      // Send user back to homepage
+      window.location.href = "index.html";
     };
   </script>
+
 </head>
-<body></body>
+<body style="background:#0b1b28; margin:0;">
+</body>
 </html>
