@@ -1,3 +1,20 @@
-<a href="https://calendly.com/quique-databirds/30min" target="_blank">
-  [Your other clickable element - text, image, etc.]
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <a id="autoClick"
+     href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     style="display:none;">
+     Calendly
+  </a>
+  <script>
+    document.getElementById("autoClick").click();
+    window.history.back();
+  </script>
+</body>
+</html>
