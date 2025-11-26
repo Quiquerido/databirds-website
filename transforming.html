@@ -6,23 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    // Redirect immediately to Calendly
-    window.location.href = "https://calendly.com/quique-databirds/30min";
+    // Open Calendly in a NEW TAB, then return user to home
+    window.onload = function() {
+      window.open("https://calendly.com/quique-databirds/30min", "_blank");
+      window.location.href = "index.html";   // or "home.html" if you prefer
+    };
   </script>
-
-  <style>
-    body {
-      background:#0b1b28;
-      color:#ffffff;
-      font-family:Arial, sans-serif;
-      text-align:center;
-      padding-top:40vh;
-      font-size:20px;
-    }
-  </style>
-
 </head>
-<body>
-  Redirecting to Calendly…
-</body>
+<body></body>
 </html>
