@@ -5,71 +5,67 @@
   <title>Quique | Data Scientist & Business Leader</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
     :root {
-      --page-bg:#0b1b28; --accent:#f2f2f2; --accent-dark:#1f6f89;
+      --page-bg:#0b1b28;
+      --accent:#f2f2f2;
       --font-main:'Poppins',sans-serif;
-      --page-top-shift:-5mm;
-      --mid-line-left:15mm; --mid-line-right:-1cm;
-      --mid-line-top:calc(40px - 2.2cm - .2cm - .3cm - .3cm - .2cm);
-      --mid-line-height:.5cm;
-      --photo-block-left:calc(26px + 2cm + 3.8px - 19mm + 13mm + 1mm + 8mm - 2.5mm + 1mm);
-      --photo-block-top:calc(-3.7em + .9cm + .4cm);
-      --text-block-top:calc(-4.8em + .9cm + .4cm);
-      --text-block-left:calc(1.7cm + 7.5px - 22.5px - 18.9px + 13mm - 1cm - 7mm - 2mm);
-      --right-bar-width:7.5cm;
-      --body-font-size:1.024rem; --body-line-height:1.6;
-      --vertical-triangle-left:-15mm; --vertical-triangle-width:.5cm;
-      --triangle-dot-size:10mm; --triangle-dot-left:-5mm;
-      --banner-title-shift:-5mm;
+
+      --top-bar-height:12mm;
+
+      --logo-width:67.5mm;
+      --logo-height:22.5mm;
+      --logo-top-offset:5mm;
+      --logo-left-offset:19mm;
+
+      --nav-top-offset:15mm;
+      --nav-left-offset:110mm;
+      --nav-gap:18mm;
+
+      --right-bar-width:75mm;
+
+      --top-triangle-width:273mm;
+      --top-triangle-height:5mm;
+      --top-triangle-right:52mm;
+      --triangle-color:#1f6f89;
     }
 
-    html,body{
-      margin:0;padding:0;
+    html, body {
+      margin:0;
+      padding:0;
       background:var(--page-bg);
       font-family:var(--font-main);
-      color:#fff;height:100%;
+      color:#fff;
+      height:100%;
+      overflow:hidden;
     }
 
-    .page-wrapper{
-      display:flex;flex-direction:row;
-      min-height:100vh;
-      margin-top:var(--page-top-shift);
-      position:relative;
-    }
-
-    .top-bar{
-      position:absolute;top:0;left:0;
-      width:100%;height:12mm;
-      background:#f2f2f2;
+    .top-bar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:var(--top-bar-height);
+      background:var(--accent);
       z-index:9999999;
     }
 
-    .content-area{
-      flex:1;display:flex;flex-direction:column;
-      z-index:1;position:relative;
-    }
-
-    .navbar{
-      display:flex;align-items:center;
-      padding:20px 40px;
-      background:var(--page-bg);
-    }
-
     .logo-wrapper {
-      position:relative;
-      display:inline-block;
-      margin-right:40px;
-      margin-left:3mm;
-      margin-top:-3mm;
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--logo-top-offset));
+      left:var(--logo-left-offset);
+      width:var(--logo-width);
+      height:var(--logo-height);
+      z-index:9999999;
     }
 
     .logo {
-      height:242px;
+      width:100%;
+      height:100%;
+      object-fit:contain;
       display:block;
     }
 
@@ -78,209 +74,225 @@
       top:0;
       left:0;
       width:100%;
-      height:calc(100% - 10mm);
-      cursor:pointer;
+      height:100%;
       background:transparent;
+      cursor:pointer;
       z-index:10;
     }
 
-    .nav-links{margin-left:1cm;}
-    .nav-links a{
-      text-decoration:none;color:#fff;
-      font-weight:400;font-size:1.14rem;
-    }
-    .nav-links a:nth-child(1){margin-left:calc(1cm - 7.6px - 18.9px);}
-    .nav-links a:nth-child(2){margin-left:calc(2cm - 7.6px - 18.9px);}
-    .nav-links a:nth-child(3){margin-left:calc(3cm - 36.5px - 7.6px - 18.9px);}
-    .nav-links a:nth-child(4){margin-left:calc(60px - 18.9px + 7.56px);}
-
-    .mid-line{
-      position:relative;
-      background:var(--accent-dark);
-      margin-left:var(--mid-line-left);
-      margin-right:var(--mid-line-right);
-      margin-top:var(--mid-line-top);
-      width:calc(100% - 1mm + 1cm);
-      height:var(--mid-line-height);
-      clip-path:polygon(0% 50%,100% 0,100% 100%);
-    }
-
-    .triangle-tip-dot{
-      width:var(--triangle-dot-size);
-      height:var(--triangle-dot-size);
-      background:var(--accent-dark);
-      border-radius:50%;
-      position:absolute;
-      left:var(--triangle-dot-left);
-      top:calc(50% - var(--triangle-dot-size)/2);
-    }
-
-    .main-content{
-      display:flex;align-items:flex-start;
-      padding:40px;max-width:1200px;margin:auto;
-    }
-
-    .photo-with-triangle{
-      position:relative;
-      display:flex;
-      align-items:stretch;
-      margin-right:40px;
-      margin-left:var(--photo-block-left);
-      margin-top:var(--photo-block-top);
-    }
-
-    .vertical-photo-triangle{
-      position:absolute;
-      left:var(--vertical-triangle-left);
-      top:0;
-      height:100%;
-      width:var(--vertical-triangle-width);
-      background:#fff;
-      clip-path:polygon(100% 0,0 50%,100% 100%);
-    }
-
-    .profile-img{
-      width:170px;
-      border-radius:16px;
-      object-fit:cover;
-      clip-path:inset(0 0 0 2px);
-      display:block;
-    }
-
-    .text-content{
-      max-width:564px;
-      text-align:left;
-      margin-top:var(--text-block-top);
-      margin-left:var(--text-block-left);
-    }
-
-    .text-content p{
-      font-size:var(--body-font-size);
-      line-height:var(--body-line-height);
-      margin-bottom:20px;
-      font-weight:400;
-    }
-
-    .right-bar{
-      width:var(--right-bar-width);
-      background:#f2f2f2;
-      display:flex;align-items:center;justify-content:center;
-      padding:20mm 8mm;
-      box-sizing:border-box;
-      margin-top:-2px;
-    }
-
-    .right-bar-inner{
-      color:#0b1b28;
-      display:flex;flex-direction:column;
-      gap:8mm;text-align:left;
-      width:100%;position:relative;
-    }
-
-    .right-bar-top{opacity:0;}
-
-    /* TRANSFORMING DATA FIXED + CLICK AREA */
-    .transform-wrapper{
+    .nav-links {
       position:fixed;
-      top:calc(12mm + 8mm + 4mm - 2mm);
-      left:calc(100% - 68mm - 2mm);
-      padding:2mm;
-      z-index:99999999;
+      top:calc(var(--top-bar-height) + var(--nav-top-offset));
+      left:calc(var(--nav-left-offset) - 15mm);
+      display:flex;
+      gap:var(--nav-gap);
+      z-index:9999999;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:#ffffff;
+      font-size:1.12rem;
+      font-weight:400;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .link-about     { left:calc(-3mm + 9mm); }
+    .link-projects  { left:calc(-6mm + 9mm); }
+    .link-partners  { left:calc(-9mm + 9mm); }
+    .link-blog      { left:calc(-12mm + 9mm); }
+    .link-contact   { left:calc(-15mm + 9mm); }
+
+    .right-bar {
+      position:fixed;
+      top:0;
+      right:0;
+      width:var(--right-bar-width);
+      height:100vh;
+      background:var(--accent);
+      z-index:1;
       pointer-events:none;
     }
-    .transform-wrapper-inner{
-      position:relative;
-      pointer-events:auto;
-    }
-    .right-bar-top-fixed{
-      font-size:1rem;font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:.12em;
+
+    .right-bar-text {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
       line-height:1.4;
-      color:#0b1b28;
-    }
-    .transform-overlay{
-      position:absolute;top:0;left:0;
-      width:100%;height:100%;
-      background:transparent;cursor:pointer;
+      letter-spacing:0.34mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
     }
 
-    .right-bar-bird-title{
-      font-size:1.02rem;font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:3mm;
-      position:relative;
-      top:calc(var(--photo-block-top) + 16mm);
-      width:calc(100% + 1mm);
-      color:#0b1b28;
-    }
-
-    .right-bar-bird{
-      display:flex;flex-direction:column;
-      gap:2.5mm;margin-top:16mm;
-      font-size:var(--body-font-size);
-      line-height:var(--body-line-height);
-      color:#0b1b28;
-      position:relative;
-    }
-
-    .solution-scaling{
-      position:absolute;
-      left:0;margin-top:38mm;
-    }
-
-    .birds-wrapper{position:relative;width:100%;}
-    .birds-overlay{
-      position:absolute;top:0;left:0;
-      width:100%;height:100%;
-      cursor:pointer;
+    .overlay-transform {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:12.1mm;
       background:transparent;
-      z-index:10;
-    }
-
-    .mid-line-copy{
-      position:absolute;
-      left:var(--mid-line-left);
-      right:var(--mid-line-right);
-      bottom:4mm;
-      width:calc(100% - 1mm + 1cm - 15mm);
-      height:var(--mid-line-height);
-      background:var(--accent-dark);
-      clip-path:polygon(100% 50%,0 0,0 100%);
-      z-index:9999;
-    }
-
-    .meeting-button{
-      position:absolute;
-      right:calc(13mm + 1px);
-      bottom:calc(7mm - 1px);
-      height:12mm;line-height:12mm;
-      padding:0 8mm;
-      background:#fff;color:#0b1b28;
-      border-radius:3mm;border:1px solid #0b1b28;
-      font-size:.99rem;font-weight:600;
-      text-transform:uppercase;
-      text-decoration:none;
-      letter-spacing:.05em;
+      cursor:pointer;
       z-index:999999;
     }
 
-    .right-bar-patch{
+    .overlay-birds {
       position:fixed;
-      right:0;bottom:0;
-      width:var(--right-bar-width);
-      height:10mm;
-      background:#f2f2f2;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:55mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .birds-header {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.24mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .birds-item {
+      position:fixed;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:400;
+      line-height:1.4;
+      letter-spacing:0.13mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    #birds-1 { top:70.75mm; }
+    #birds-2 { top:80.50mm; }
+    #birds-3 { top:90.25mm; }
+    #birds-4 { top:100.00mm; }
+    #birds-5 { top:109.75mm; }
+
+    .meeting-button {
+      position:fixed;
+      top:121.5mm;
+      right:13mm;
+      height:12mm;
+      line-height:12mm;
+      padding:0 8mm;
+      background:#ffffff;
+      color:#0b1b28;
+      border-radius:3mm;
+      border:1px solid #0b1b28;
+      font-size:0.99rem;
+      font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:0.05em;
+      z-index:999999;
+      cursor:pointer;
+    }
+
+    .top-triangle {
+      position:fixed;
+      top:45mm;
+      right:var(--top-triangle-right);
+      width:var(--top-triangle-width);
+      height:var(--top-triangle-height);
+      background:var(--triangle-color);
+      clip-path:polygon(0 50%, 100% 0, 100% 100%);
       z-index:5;
     }
 
-    @keyframes softBlinkTwice{
-      0%{opacity:1;}25%{opacity:.4;}
-      50%{opacity:1;}75%{opacity:.4;}
-      100%{opacity:1;}
+    .content-area {
+      position:fixed;
+      left:22mm;
+      top:calc(45mm + var(--top-triangle-height) + 11mm);
+      right:var(--right-bar-width);
+      bottom:0;
+      overflow-y:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      z-index:50;
     }
-    .blink-now{animation:softBlinkTwice 1s ease-in-out;}
+
+    .content-area::-webkit-scrollbar { width:0; height:0; }
+
+    .photo-block {
+      margin-top:3mm;
+      margin-left:21.5mm;
+      width:160px;
+      height:auto;
+      position:relative;
+      z-index:10;
+    }
+
+    .photo-block img {
+      width:153px;
+      border-radius:14px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .photo-triangle {
+      position:absolute;
+      top:0mm;
+      right:calc(153px + 15mm);
+      width:5mm;
+      height:202px;
+      background:#ffffff;
+      clip-path:polygon(100% 0, 0 50%, 100% 100%);
+      z-index:5;
+    }
+
+    .intro-text {
+      position:absolute;
+      top:2.7mm;
+      left:calc(38mm + 153px);
+      right:20mm;
+      font-size:4mm;
+      line-height:1.55;
+      max-width:calc(100% - (65mm + 153px));
+    }
+
+    /* BOTTOM TRIANGLE*/
+    .bottom-triangle {
+      position:fixed;
+      top:calc(131.57mm);
+      right:65.4mm;
+      width:260mm;
+      height:5mm;
+      background:var(--triangle-color);
+      clip-path:polygon(0 0, 100% 50%, 0 100%);
+      z-index:5;
+    }
+
+    /* BLINK ANIMATION (ADDED) */
+    @keyframes softBlinkTwice {
+      0%   { opacity:1; }
+      25%  { opacity:.4; }
+      50%  { opacity:1; }
+      75%  { opacity:.4; }
+      100% { opacity:1; }
+    }
+
+    .blink-now {
+      animation:softBlinkTwice 1s ease-in-out;
+    }
 
   </style>
 </head>
@@ -289,106 +301,79 @@
 
   <div class="top-bar"></div>
 
-  <div class="transform-wrapper">
-    <div class="transform-wrapper-inner">
-      <div class="right-bar-top-fixed">
-        Transforming Data<br>into Business Value
-      </div>
-      <a href="#transform" class="transform-overlay"></a>
-    </div>
+  <div class="logo-wrapper">
+    <img src="logo.jpg" class="logo" alt="">
+    <a href="index.html" class="logo-overlay"></a>
   </div>
 
-  <div class="page-wrapper">
+  <div class="nav-links">
+    <a href="about.html"     class="link-about">About</a>
+    <a href="projects.html"  class="link-projects">Projects</a>
+    <a href="partners.html"  class="link-partners">Partners</a>
+    <a href="blog.html"      class="link-blog">Blog</a>
+    <a href="contact.html"   class="link-contact">Contact</a>
+  </div>
 
-    <a href="https://calendly.com/quique-databirds/30min" class="meeting-button" target="_blank">
-      Book a Meeting
-    </a>
+  <div class="right-bar"></div>
+  <div class="top-triangle"></div>
+  <div class="bottom-triangle" id="triangleBlink"></div>
 
-    <div class="content-area">
+  <div class="right-bar-text">
+    TRANSFORMING DATA<br>INTO BUSINESS VALUE
+  </div>
 
-      <!-- NAVBAR -->
-      <div class="navbar">
-        <div class="logo-wrapper">
-          <img src="logo.jpg" class="logo" alt="">
-          <a href="https://databirds.ai" class="logo-overlay"></a>
-        </div>
+  <a href="transforming.html" class="overlay-transform"></a>
 
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
+  <div class="birds-header">THE BIRDS FRAMEWORK</div>
 
-      <!-- MID LINE -->
-      <div class="mid-line">
-        <div class="triangle-tip-dot"></div>
-      </div>
+  <div id="birds-1" class="birds-item">Business Alignment</div>
+  <div id="birds-2" class="birds-item">Insight Discovery</div>
+  <div id="birds-3" class="birds-item">Real-World Modeling</div>
+  <div id="birds-4" class="birds-item">Decision Enablement</div>
+  <div id="birds-5" class="birds-item">Solution Scaling</div>
 
-      <div class="mid-line-copy"></div>
+  <a href="birds.html" class="overlay-birds"></a>
 
-      <!-- MAIN CONTENT -->
-      <div class="main-content">
+  <a href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     class="meeting-button">
+    BOOK A MEETING
+  </a>
 
-        <div class="photo-with-triangle">
-          <div class="vertical-photo-triangle"></div>
-          <img src="photo.jpg" alt="" class="profile-img">
-        </div>
+  <div class="content-area">
 
-        <div class="text-content">
-          <p>Hey! I'm Enrique, a seasoned business leader and data scientist. With over a decade leading global sales, partnerships, and tech-product growth across 30+ countries, I leverage that strategic experience to solve business challenges.</p>
-
-          <p>I blend rigorous analysis, statistical modeling, and machine learning to achieve measurable growth and meaningful impact – bridging science and business to turn complex data into clear, actionable insights.</p>
-        </div>
-
-      </div>
-
+    <div class="photo-block">
+      <div class="photo-triangle"></div>
+      <img src="photo.jpg" alt="Quique photo">
     </div>
 
-    <!-- RIGHT BAR -->
-    <div class="right-bar">
-      <div class="right-bar-inner">
-
-        <div class="right-bar-top">
-          Transforming Data<br>into Business Value
-        </div>
-
-        <div class="birds-wrapper">
-          <div class="right-bar-bird-title">The BIRDS Framework</div>
-
-          <div class="right-bar-bird">
-            <div class="bird-line">Business Alignment</div>
-            <div class="bird-line">Insight Discovery</div>
-            <div class="bird-line">Real-World Modeling</div>
-            <div class="bird-line">Decision Enablement</div>
-            <div class="solution-scaling">Solution Scaling</div>
-          </div>
-
-          <a href="#birdsframework" class="birds-overlay"></a>
-        </div>
-
-      </div>
+    <div class="intro-text">
+      Hey! I'm Enrique, a seasoned business leader and data scientist.<br>
+      With over a decade leading global sales, partnerships, and tech-<br>
+      product growth across 30 countries, I leverage that strategic<br>
+      experience to solve business challenges.
+      <br><br>
+      I blend rigorous analysis, statistical modeling, and machine learning<br>
+      to achieve measurable growth and meaningful impact – bridging<br>
+      science and business to turn complex data into clear, actionable<br>
+      insights.
     </div>
 
   </div>
 
-  <div class="right-bar-patch"></div>
-
-  <div id="transform"></div>
-  <div id="birdsframework"></div>
-
+  <!-- BLINK CONTROLLER (ADDED) -->
   <script>
     window.addEventListener("load", () => {
       const btn = document.querySelector(".meeting-button");
-      const triangle = document.querySelector(".mid-line-copy");
+      const triangle = document.querySelector("#triangleBlink");
 
-      function blinkAll(){
-        btn.classList.add("blink-now");
-        triangle.classList.add("blink-now");
+      function blinkAll() {
+        if (btn) btn.classList.add("blink-now");
+        if (triangle) triangle.classList.add("blink-now");
+
         setTimeout(() => {
-          btn.classList.remove("blink-now");
-          triangle.classList.remove("blink-now");
+          if (btn) btn.classList.remove("blink-now");
+          if (triangle) triangle.classList.remove("blink-now");
         }, 1200);
       }
 
