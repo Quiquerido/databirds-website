@@ -1,1 +1,17 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script>
+    // Open Calendly in a NEW TAB, then return user to home
+    window.onload = function() {
+      window.open("https://calendly.com/quique-databirds/30min", "_blank");
+      window.location.href = "index.html";   // or "home.html" if you prefer
+    };
+  </script>
+</head>
+<body></body>
+</html>
