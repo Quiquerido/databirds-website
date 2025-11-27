@@ -326,11 +326,11 @@
         </p>
 
         <p class="reveal">
-          So while the learned policy might surprise you in its specifics, the framework that makes learning possible—and meaningful—comes from your deep understanding of the business problem. The insight was there before the agent ran a single episode.
+          So while the learned policy might surprise you in its specifics, the framework that makes learning possible and meaningful comes from your deep understanding of the problem. The insight was there before the agent ran a single episode.
         </p>
 
         <p class="reveal">
-          Business Alignment and Insight Discovery still build the foundation. The agent just explores it efficiently.
+          Insight still builds the foundation. The agent explores it efficiently.
         </p>
 
         <div style="height:12mm;"></div>
