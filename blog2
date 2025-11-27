@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The BIRDS Framework and Reinforcement Learning | Quique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --page-bg:#0b1b28;
+      --accent:#f2f2f2;
+      --font-main:'Poppins',sans-serif;
+
+      --top-bar-height:12mm;
+
+      --logo-width:67.5mm;
+      --logo-height:22.5mm;
+      --logo-top-offset:5mm;
+      --logo-left-offset:19mm;
+
+      --nav-top-offset:15mm;
+      --nav-left-offset:110mm;
+      --nav-gap:18mm;
+
+      --right-bar-width:75mm;
+
+      --triangle-color:#1f6f89;
+    }
+
+    html, body {
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:var(--font-main);
+      color:#fff;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .top-bar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:var(--top-bar-height);
+      background:var(--accent);
+      z-index:9999999;
+    }
+
+    .logo-wrapper {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--logo-top-offset));
+      left:var(--logo-left-offset);
+      width:var(--logo-width);
+      height:var(--logo-height);
+      z-index:9999999;
+    }
+
+    .logo {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .logo-overlay {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:transparent;
+      cursor:pointer;
+      z-index:10;
+    }
+
+    .nav-links {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--nav-top-offset));
+      left:calc(var(--nav-left-offset) - 15mm);
+      display:flex;
+      gap:var(--nav-gap);
+      z-index:9999999;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:#ffffff;
+      font-size:1.12rem;
+      font-weight:400;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .link-about     { left:calc(-3mm + 9mm); }
+    .link-projects  { left:calc(-6mm + 9mm); }
+    .link-partners  { left:calc(-9mm + 9mm); }
+    .link-blog      { left:calc(-12mm + 9mm); }
+    .link-contact   { left:calc(-15mm + 9mm); }
+
+    .nav-links a:hover { opacity:0.65; }
+
+    .right-bar {
+      position:fixed;
+      top:0;
+      right:0;
+      width:var(--right-bar-width);
+      height:100vh;
+      background:var(--accent);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .right-bar-text {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.34mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .overlay-transform {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:12.1mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .birds-header {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.24mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .birds-item {
+      position:fixed;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:400;
+      line-height:1.4;
+      letter-spacing:0.13mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    #birds-1 { top:70.75mm; }
+    #birds-2 { top:80.50mm; }
+    #birds-3 { top:90.25mm; }
+    #birds-4 { top:100.00mm; }
+    #birds-5 { top:109.75mm; }
+
+    .overlay-birds {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:54.75mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .meeting-button {
+      position:fixed;
+      top:121.5mm;
+      right:13mm;
+      height:12mm;
+      line-height:12mm;
+      padding:0 8mm;
+      background:#ffffff;
+      color:#0b1b28;
+      border-radius:3mm;
+      border:1px solid #0b1b28;
+      font-size:0.99rem;
+      font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:0.05em;
+      z-index:999999;
+      cursor:pointer;
+    }
+
+    .top-triangle {
+      position:fixed;
+      top:45mm;
+      right:0mm;
+      width:100mm;
+      height:5mm;
+      background:var(--triangle-color);
+      clip-path:polygon(100% 0, 0 50%, 100% 100%);
+      z-index:5;
+    }
+
+    .content-area {
+      position:fixed;
+      left:22mm;
+      top:43mm;
+      right:var(--right-bar-width);
+      bottom:0;
+      overflow-y:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      z-index:50;
+    }
+
+    .content-area::-webkit-scrollbar { width:0; height:0; }
+
+    .article-wrapper {
+      margin-top:8mm;
+      margin-left:27mm;
+      margin-right:20mm;
+      max-width:60ch;
+    }
+
+    .article-body p {
+      font-size:4mm;
+      line-height:1.55;
+      margin:0 0 4mm 0;
+      hyphens:auto;
+      text-align:justify;
+    }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(6mm);
+      transition:opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar"></div>
+
+  <div class="logo-wrapper">
+    <img src="logo.jpg" class="logo" alt="">
+    <a href="index.html" class="logo-overlay"></a>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html"     class="link-about">About</a>
+    <a href="projects.html"  class="link-projects">Projects</a>
+    <a href="partners.html"  class="link-partners">Partners</a>
+    <a href="blog.html"      class="link-blog">Blog</a>
+    <a href="contact.html"   class="link-contact">Contact</a>
+  </div>
+
+  <div class="right-bar"></div>
+
+  <div class="top-triangle"></div>
+
+  <div class="right-bar-text">
+    TRANSFORMING DATA<br>INTO BUSINESS VALUE
+  </div>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="overlay-transform"></a>
+  
+  <div class="birds-header">THE BIRDS FRAMEWORK</div>
+  <div id="birds-1" class="birds-item">Business Alignment</div>
+  <div id="birds-2" class="birds-item">Insight Discovery</div>
+  <div id="birds-3" class="birds-item">Real-World Modeling</div>
+  <div id="birds-4" class="birds-item">Decision Enablement</div>
+  <div id="birds-5" class="birds-item">Solution Scaling</div>
+  <a href="birds.html" class="overlay-birds"></a>
+
+  <a href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     class="meeting-button">
+    BOOK A MEETING
+  </a>
+
+  <div class="content-area">
+    <div class="article-wrapper">
+
+      <div class="article-body">
+
+        <p class="reveal" style="font-size:6mm; font-weight:600; margin-bottom:6mm;">
+          The BIRDS Framework and Reinforcement Learning
+        </p>
+
+        <p class="reveal">
+          A very senior data scientist (my cousin, actually) pushed back on my last post about where insight really lives. His challenge: "What about reinforcement learning? The agent <em>learns</em> optimal strategies through trial-and-error. Doesn't that contradict your argument that insight comes before modeling?"
+        </p>
+
+        <p class="reveal">
+          Fair question. But I think RL actually <em>strengthens</em> my case.
+        </p>
+
+        <p class="reveal">
+          Yes, the agent explores and discovers policies you didn't explicitly program. But who designed the reward function? Who defined the state and action spaces? Who set the boundaries, constraints, and penalties?
+        </p>
+
+        <p class="reveal">
+          You did. And those decisions encode <em>massive</em> insight about the problem. You're essentially teaching the agent what "good" means, what variables matter, and what trade-offs exist. The agent optimizes within the world you've defined based on the values you've embedded.
+        </p>
+
+        <p class="reveal">
+          So while the learned policy might surprise you in its specifics, the framework that makes learning possible—and meaningful—comes from your deep understanding of the business problem. The insight was there before the agent ran a single episode.
+        </p>
+
+        <p class="reveal">
+          Business Alignment and Insight Discovery still build the foundation. The agent just explores it efficiently.
+        </p>
+
+        <div style="height:12mm;"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const content = document.querySelector('.content-area');
+
+    window.addEventListener('wheel', (e) => {
+      content.scrollTop += e.deltaY;
+    }, { passive:true });
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    },{
+      root: document.querySelector('.content-area'),
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.reveal').forEach((el, index)=>{
+      el.style.transitionDelay = (index * 80) + "ms";
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
