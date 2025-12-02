@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Quique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --page-bg:#0b1b28;
+      --accent:#f2f2f2;
+      --font-main:'Poppins',sans-serif;
+
+      --top-bar-height:12mm;
+
+      --logo-width:255px;
+      --logo-height:85px;
+      --logo-top-offset:5mm;
+      --logo-left-offset:19mm;
+
+      --nav-top-offset:15mm;
+      --nav-left-offset:110mm;
+      --nav-gap:18mm;
+
+      --right-bar-width:75mm;
+
+      --triangle-color:#1f6f89;
+    }
+
+    html, body {
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:var(--font-main);
+      color:#fff;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .top-bar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:var(--top-bar-height);
+      background:var(--accent);
+      z-index:9999999;
+    }
+
+    .logo-wrapper {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--logo-top-offset));
+      left:var(--logo-left-offset);
+      width:var(--logo-width);
+      height:var(--logo-height);
+      z-index:9999999;
+    }
+
+    .logo {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .logo-overlay {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:transparent;
+      cursor:pointer;
+      z-index:10;
+    }
+
+    .nav-links {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--nav-top-offset));
+      left:calc(var(--nav-left-offset) - 15mm);
+      display:flex;
+      gap:var(--nav-gap);
+      z-index:9999999;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:#ffffff;
+      font-size:1.12rem;
+      font-weight:400;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .link-about     { left:calc(-3mm + 9mm); }
+    .link-projects  { left:calc(-6mm + 9mm); }
+    .link-partners  { left:calc(-9mm + 9mm); }
+    .link-blog      { left:calc(-12mm + 9mm); }
+    .link-contact   { left:calc(-15mm + 9mm); }
+
+    .nav-links a:hover { opacity:0.65; }
+
+    .right-bar {
+      position:fixed;
+      top:0;
+      right:0;
+      width:var(--right-bar-width);
+      height:100vh;
+      background:var(--accent);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .right-bar-text {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.34mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .overlay-transform {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:12.1mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .birds-header {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.24mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .birds-item {
+      position:fixed;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:400;
+      line-height:1.4;
+      letter-spacing:0.13mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    #birds-1 { top:70.75mm; }
+    #birds-2 { top:80.50mm; }
+    #birds-3 { top:90.25mm; }
+    #birds-4 { top:100.00mm; }
+    #birds-5 { top:109.75mm; }
+
+    .overlay-birds {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:54.75mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .meeting-button {
+      position:fixed;
+      top:121.5mm;
+      right:13mm;
+      height:12mm;
+      line-height:12mm;
+      padding:0 8mm;
+      background:#ffffff;
+      color:#0b1b28;
+      border-radius:3mm;
+      border:1px solid #0b1b28;
+      font-size:0.99rem;
+      font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:0.05em;
+      z-index:999999;
+      cursor:pointer;
+    }
+
+    .top-triangle {
+      position:fixed;
+      top:45mm;
+      right:0mm;
+      width:100mm;
+      height:5mm;
+      background:var(--triangle-color);
+      clip-path:polygon(100% 0, 0 50%, 100% 100%);
+      z-index:5;
+    }
+
+    .content-area {
+      position:fixed;
+      left:22mm;
+      top:43mm;
+      right:var(--right-bar-width);
+      bottom:0;
+      overflow-y:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      z-index:50;
+    }
+
+    .content-area::-webkit-scrollbar { width:0; height:0; }
+
+    .contact-wrapper {
+      margin-top:8mm;
+      margin-left:27mm;
+      margin-right:20mm;
+      max-width:60ch;
+    }
+
+    .contact-title {
+      font-size:6mm;
+      font-weight:600;
+      letter-spacing:0.24mm;
+      margin:0 0 6mm 0;
+    }
+
+    .contact-intro {
+      font-size:4.5mm;
+      line-height:1.55;
+      margin:0 0 8mm 0;
+    }
+
+    .contact-item {
+      margin:5mm 0;
+      font-size:4mm;
+      line-height:1.6;
+    }
+
+    .contact-label {
+      font-weight:600;
+      font-size:4mm;
+      margin-bottom:1mm;
+      display:block;
+      letter-spacing:0.08mm;
+    }
+
+    .contact-item a {
+      color:#ffffff;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,0.3);
+      transition:border-color 0.2s;
+    }
+
+    .contact-item a:hover {
+      border-bottom-color:#ffffff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar"></div>
+
+  <div class="logo-wrapper">
+    <img src="logo.jpg" class="logo" alt="">
+    <a href="index.html" class="logo-overlay"></a>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html"     class="link-about">About</a>
+    <a href="projects.html"  class="link-projects">Projects</a>
+    <a href="partners.html"  class="link-partners">Partners</a>
+    <a href="blog.html"      class="link-blog">Blog</a>
+    <a href="contact.html"   class="link-contact">Contact</a>
+  </div>
+
+  <div class="right-bar"></div>
+  <div class="top-triangle"></div>
+
+  <div class="right-bar-text">
+    TRANSFORMING DATA<br>INTO BUSINESS VALUE
+  </div>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="overlay-transform"></a>
+  
+  <div class="birds-header">THE BIRDS FRAMEWORK</div>
+  <div id="birds-1" class="birds-item">Business Alignment</div>
+  <div id="birds-2" class="birds-item">Insight Discovery</div>
+  <div id="birds-3" class="birds-item">Real-World Modeling</div>
+  <div id="birds-4" class="birds-item">Decision Enablement</div>
+  <div id="birds-5" class="birds-item">Solution Scaling</div>
+  <a href="birds.html" class="overlay-birds"></a>
+
+  <a href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     class="meeting-button">
+    BOOK A MEETING
+  </a>
+
+  <div class="content-area">
+    <div class="contact-wrapper">
+
+      <h1 class="contact-title">Contact</h1>
+
+      <p class="contact-intro">
+        Ready to transform your data into business value?
+        <br>
+        Reach out to discuss how we can work together.
+      </p>
+
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a href="mailto:quique@databirds.ai?subject=Data%20science%20consultation%20inquiry">
+          quique@databirds.ai
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <a href="tel:+972523433442">+972 523 433 442</a>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/enrique-feldfogel/" target="_blank">
+          linkedin.com/in/enrique-feldfogel
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
