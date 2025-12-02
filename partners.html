@@ -337,6 +337,13 @@
       opacity:0.9;
     }
 
+    @keyframes softBlinkTwice{
+      0%{opacity:1;}25%{opacity:.4;}
+      50%{opacity:1;}75%{opacity:.4;}
+      100%{opacity:1;}
+    }
+    .blink-now{animation:softBlinkTwice 1s ease-in-out;}
+
   </style>
 </head>
 
@@ -445,6 +452,24 @@
 
     </div>
   </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const btn = document.querySelector(".meeting-button");
+
+      function blinkAll(){
+        if (btn) btn.classList.add("blink-now");
+        setTimeout(() => {
+          if (btn) btn.classList.remove("blink-now");
+        }, 1200);
+      }
+
+      setTimeout(() => {
+        blinkAll();
+        setInterval(blinkAll, 15000);
+      }, 10000);
+    });
+  </script>
 
 </body>
 </html>
