@@ -40,9 +40,6 @@
       overflow:hidden;
     }
 
-    /* ============================================================
-       FIXED HEADER
-       ============================================================ */
     .top-bar {
       position:fixed;
       top:0;
@@ -80,7 +77,6 @@
       z-index:10;
     }
 
-    /* NAVIGATION */
     .nav-links {
       position:fixed;
       top:calc(var(--top-bar-height) + var(--nav-top-offset));
@@ -107,9 +103,6 @@
 
     .nav-links a:hover { opacity:0.65; }
 
-    /* ============================================================
-       RIGHT BAR
-       ============================================================ */
     .right-bar {
       position:fixed;
       top:0;
@@ -193,9 +186,6 @@
       z-index:999999;
     }
 
-    /* ============================================================
-       BOOK A MEETING BUTTON
-       ============================================================ */
     .meeting-button {
       position:fixed;
       top:121.5mm;
@@ -216,9 +206,6 @@
       cursor:pointer;
     }
 
-    /* ============================================================
-       SHORT TOP TRIANGLE (LEFT-POINTING)
-       ============================================================ */
     .top-triangle {
       position:fixed;
       top:45mm;
@@ -230,9 +217,6 @@
       z-index:5;
     }
 
-    /* ============================================================
-       CONTENT AREA
-       ============================================================ */
     .content-area {
       position:fixed;
       left:22mm;
@@ -292,6 +276,18 @@
       opacity:1;
       transform:translateY(0);
     }
+
+    @keyframes softBlinkTwice {
+      0% { opacity:1; }
+      25% { opacity:0.4; }
+      50% { opacity:1; }
+      75% { opacity:0.4; }
+      100% { opacity:1; }
+    }
+
+    .blink-now {
+      animation:softBlinkTwice 1s ease-in-out;
+    }
   </style>
 </head>
 
@@ -339,13 +335,14 @@
   <div class="content-area">
     <div class="article-wrapper">
 
-      <!-- TITLE + SUBTITLE -->
-      <h1 class="article-title-main reveal">Cost-optimized Wafer Anomaly Detection</h1>
+      <h1 class="article-title-main reveal">
+        <img src="wafer-logo.png" style="width:35px; height:35px; vertical-align:middle; margin-right:8px; border-radius:50%;">
+        Cost-optimized Wafer Anomaly Detection
+      </h1>
       <h2 class="article-title-sub reveal">Using an interpretable, rule-based model to reduce inspection cost by 72%</h2>
 
       <div class="article-divider reveal"></div>
 
-      <!-- BODY -->
       <div class="article-body">
 
         <p class="reveal">
@@ -355,11 +352,23 @@
           Yet defects are rare, buried in sensor data from systems generating 1,500+ sensor readings.
         </p>
 
+        <div class="reveal" style="text-align:center; margin:8mm 0;">
+          <img src="wafer-binary-sparsity.png" 
+               style="width:100%; max-width:700px; border-radius:2mm; box-shadow:0 2mm 8mm rgba(0,0,0,0.3);" 
+               alt="Binary sparsity analysis showing sensor activation patterns across 1,500+ features">
+        </div>
+
         <p class="reveal">
           I developed a custom anomaly detection system built from first principles, integrating
           deep EDA and statistical research, spike-pattern and sensor analysis, and multi-layer
           rule logic designed to capture the true physical behavior of the machinery.
         </p>
+
+        <div class="reveal" style="text-align:center; margin:8mm 0;">
+          <img src="wafer-firing-patterns.png" 
+               style="width:100%; max-width:700px; border-radius:2mm; box-shadow:0 2mm 8mm rgba(0,0,0,0.3);" 
+               alt="Normal and anomalous firing patterns comparison">
+        </div>
 
         <p class="reveal">
           The resulting model outperforms standard ML baselines – including Random Forest,
@@ -370,11 +379,9 @@
           modeling approach.
         </p>
 
-        <!-- EMAIL BLOCK -->
         <p class="reveal" style="margin-top:6mm;">
-          Contact me if you’d like to discuss the methodology, business impact, or modeling approach.
+          Contact me if you'd like to discuss the methodology, business impact, or modeling approach.
           <br><br>
-
           <a href="mailto:quique@databirds.ai?bcc=quique.feldfogel@gmail.com"
              style="color:#ffffff; text-decoration:underline; font-weight:400; display:inline-block;">
              quique@databirds.ai
@@ -390,24 +397,40 @@
   <script>
     const content = document.querySelector('.content-area');
 
-    window.addEventListener('wheel', (e) => {
+    window.addEventListener('wheel', function(e) {
       content.scrollTop += e.deltaY;
-    }, { passive:true });
+    }, { passive: true });
 
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    },{
+    }, {
       root: document.querySelector('.content-area'),
       threshold: 0.2
     });
 
-    document.querySelectorAll('.reveal').forEach((el, index)=>{
+    document.querySelectorAll('.reveal').forEach(function(el, index) {
       el.style.transitionDelay = (index * 80) + "ms";
       observer.observe(el);
+    });
+
+    window.addEventListener("load", function() {
+      const btn = document.querySelector(".meeting-button");
+
+      function blinkAll() {
+        if (btn) btn.classList.add("blink-now");
+        setTimeout(function() {
+          if (btn) btn.classList.remove("blink-now");
+        }, 1200);
+      }
+
+      setTimeout(function() {
+        blinkAll();
+        setInterval(blinkAll, 15000);
+      }, 10000);
     });
   </script>
 
