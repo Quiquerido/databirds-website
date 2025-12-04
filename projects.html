@@ -261,7 +261,7 @@
     .article-body p {
       font-size:4mm;
       line-height:1.55;
-      margin:0 0 4mm 0;
+      margin:0;
       hyphens:auto;
       text-align:justify;
     }
@@ -352,7 +352,7 @@
           Yet defects are rare, buried in sensor data from systems generating 1,500+ sensor readings.
         </p>
 
-        <div class="reveal" style="text-align:center; margin:8mm 0;">
+        <div class="reveal" style="text-align:center; margin:0;">
           <img src="wafer-binary-sparsity.png" 
                style="width:100%; max-width:700px; border-radius:2mm; box-shadow:0 2mm 8mm rgba(0,0,0,0.3);" 
                alt="Binary sparsity analysis showing sensor activation patterns across 1,500+ features">
@@ -364,7 +364,7 @@
           rule logic designed to capture the true physical behavior of the machinery.
         </p>
 
-        <div class="reveal" style="text-align:center; margin:8mm 0;">
+        <div class="reveal" style="text-align:center; margin:0;">
           <img src="wafer-firing-patterns.png" 
                style="width:100%; max-width:700px; border-radius:2mm; box-shadow:0 2mm 8mm rgba(0,0,0,0.3);" 
                alt="Normal and anomalous firing patterns comparison">
@@ -381,9 +381,9 @@
 
         <p class="reveal" style="margin-top:6mm;">
           Contact me if you'd like to discuss the methodology, business impact, or modeling approach.
-          <br><br>
+          <br>
           <a href="mailto:quique@databirds.ai?bcc=quique.feldfogel@gmail.com"
-             style="color:#ffffff; text-decoration:underline; font-weight:400; display:inline-block;">
+             style="color:#fbc02d; text-decoration:none; font-weight:400; display:inline-block;">
              quique@databirds.ai
           </a>
         </p>
@@ -409,7 +409,8 @@
       });
     }, {
       root: document.querySelector('.content-area'),
-      threshold: 0.2
+      threshold: 0,
+      rootMargin: '23px 0px 0px 0px'
     });
 
     document.querySelectorAll('.reveal').forEach(function(el, index) {
