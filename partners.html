@@ -4,7 +4,482 @@
   <meta charset="UTF-8">
   <title>Partners | Quique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Partners | Quique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --page-bg:#0b1b28;
+      --accent:#f2f2f2;
+      --font-main:'Poppins',sans-serif;
+
+      --top-bar-height:12mm;
+
+      --logo-width:255px;
+      --logo-height:85px;
+      --logo-top-offset:5mm;
+      --logo-left-offset:19mm;
+
+      --nav-top-offset:15mm;
+      --nav-left-offset:110mm;
+      --nav-gap:18mm;
+
+      --right-bar-width:75mm;
+
+      --triangle-color:#1f6f89;
+    }
+
+    html, body {
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:var(--font-main);
+      color:#fff;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .top-bar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:var(--top-bar-height);
+      background:var(--accent);
+      z-index:9999999;
+    }
+
+    .logo-wrapper {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--logo-top-offset));
+      left:var(--logo-left-offset);
+      width:var(--logo-width);
+      height:var(--logo-height);
+      z-index:9999999;
+    }
+
+    .logo {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .logo-overlay {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:transparent;
+      cursor:pointer;
+      z-index:10;
+    }
+
+    .nav-links {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--nav-top-offset));
+      left:calc(var(--nav-left-offset) - 15mm);
+      display:flex;
+      gap:var(--nav-gap);
+      z-index:9999999;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:#ffffff;
+      font-size:1.12rem;
+      font-weight:400;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .link-about     { left:calc(-3mm + 9mm); }
+    .link-projects  { left:calc(-6mm + 9mm); }
+    .link-partners  { left:calc(-9mm + 9mm); }
+    .link-blog      { left:calc(-12mm + 9mm); }
+    .link-contact   { left:calc(-15mm + 9mm); }
+
+    .nav-links a:hover { opacity:0.65; }
+
+    .right-bar {
+      position:fixed;
+      top:0;
+      right:0;
+      width:var(--right-bar-width);
+      height:100vh;
+      background:var(--accent);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .right-bar-text {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.34mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .overlay-transform {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:12.1mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .birds-header {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.24mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .birds-item {
+      position:fixed;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:400;
+      line-height:1.4;
+      letter-spacing:0.13mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    #birds-1 { top:70.75mm; }
+    #birds-2 { top:80.50mm; }
+    #birds-3 { top:90.25mm; }
+    #birds-4 { top:100.00mm; }
+    #birds-5 { top:109.75mm; }
+
+    .overlay-birds {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:54.75mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .meeting-button {
+      position:fixed;
+      top:121.5mm;
+      right:13mm;
+      height:12mm;
+      line-height:12mm;
+      padding:0 8mm;
+      background:#ffffff;
+      color:#0b1b28;
+      border-radius:3mm;
+      border:1px solid #0b1b28;
+      font-size:0.99rem;
+      font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:0.05em;
+      z-index:999999;
+      cursor:pointer;
+    }
+
+    .top-triangle {
+      position:fixed;
+      top:45mm;
+      right:0mm;
+      width:100mm;
+      height:5mm;
+      background:var(--triangle-color);
+      clip-path:polygon(100% 0, 0 50%, 100% 100%);
+      z-index:5;
+    }
+
+    .content-area {
+      position:fixed;
+      left:22mm;
+      top:43mm;
+      right:var(--right-bar-width);
+      bottom:0;
+      overflow-y:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      z-index:50;
+      scroll-behavior:smooth;
+    }
+
+    .content-area::-webkit-scrollbar { width:0; height:0; }
+
+    .partners-wrapper {
+      margin-top:8mm;
+      margin-left:27mm;
+      margin-right:20mm;
+      max-width:60ch;
+    }
+
+    .partners-title {
+      font-size:6mm;
+      font-weight:600;
+      letter-spacing:0.24mm;
+      margin:0 0 6mm 0;
+    }
+
+    .partners-intro {
+      font-size:4mm;
+      line-height:1.55;
+      margin:0 0 4mm 0;
+    }
+
+    .partner-link {
+      display:block;
+      margin:1mm 0;
+      padding:4mm 0;
+      text-decoration:none;
+      color:#ffffff;
+      transition:opacity 0.2s;
+    }
+
+    .partner-link:hover {
+      opacity:0.7;
+    }
+
+    .partner-name {
+      font-size:4mm;
+      font-weight:400;
+      color:#fbc02d;
+      margin-bottom:1mm;
+    }
+
+    .partner-role {
+      font-size:4mm;
+      font-weight:400;
+      opacity:0.85;
+    }
+
+    .partner-profile {
+      margin-top:3mm;
+      padding-top:8mm;
+      border-top:2px solid rgba(255,255,255,0.2);
+    }
+
+    .profile-header {
+      display:flex;
+      align-items:flex-start;
+      gap:6mm;
+      margin-bottom:6mm;
+    }
+
+    .profile-photo {
+      width:80px;
+      height:80px;
+      border-radius:8px;
+      object-fit:cover;
+      flex-shrink:0;
+    }
+
+    .profile-info {
+      flex:1;
+    }
+
+    .profile-name {
+      font-size:4mm;
+      font-weight:400;
+      color:#fbc02d;
+      margin:0 0 1mm 0;
+    }
+
+    .profile-role {
+      font-size:4mm;
+      font-weight:400;
+      opacity:0.85;
+      margin:0 0 3mm 0;
+    }
+
+    .profile-linkedin {
+      font-size:4mm;
+    }
+
+    .profile-linkedin a {
+      color:#ffffff;
+      text-decoration:none;
+      border-bottom:none;
+      transition:opacity 0.2s;
+    }
+
+    .profile-linkedin a:hover {
+      opacity:0.7;
+    }
+
+    .profile-bio {
+      font-size:4mm;
+      line-height:1.55;
+      opacity:0.9;
+    }
+
+    @keyframes softBlinkTwice{
+      0%{opacity:1;}25%{opacity:.4;}
+      50%{opacity:1;}75%{opacity:.4;}
+      100%{opacity:1;}
+    }
+    .blink-now{animation:softBlinkTwice 1s ease-in-out;}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar"></div>
+
+  <div class="logo-wrapper">
+    <img src="logo.jpg" class="logo" alt="">
+    <a href="index.html" class="logo-overlay"></a>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html"     class="link-about">About</a>
+    <a href="projects.html"  class="link-projects">Projects</a>
+    <a href="partners.html"  class="link-partners">Partners</a>
+    <a href="blog.html"      class="link-blog">Blog</a>
+    <a href="contact.html"   class="link-contact">Contact</a>
+  </div>
+
+  <div class="right-bar"></div>
+  <div class="top-triangle"></div>
+
+  <div class="right-bar-text">
+    TRANSFORMING DATA<br>INTO BUSINESS VALUE
+  </div>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="overlay-transform"></a>
+  
+  <div class="birds-header">THE BIRDS FRAMEWORK</div>
+  <div id="birds-1" class="birds-item">Business Alignment</div>
+  <div id="birds-2" class="birds-item">Insight Discovery</div>
+  <div id="birds-3" class="birds-item">Real-World Modeling</div>
+  <div id="birds-4" class="birds-item">Decision Enablement</div>
+  <div id="birds-5" class="birds-item">Solution Scaling</div>
+  <a href="birds.html" class="overlay-birds"></a>
+
+  <a href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     class="meeting-button">
+    BOOK A MEETING
+  </a>
+
+  <div class="content-area">
+    <div class="partners-wrapper">
+
+      <h1 class="partners-title" style="color:#fbc02d;">Partners</h1>
+
+      <p class="partners-intro">
+        I collaborate with experienced professionals who bring deep expertise in AI, software engineering, and development. Together, we deliver end-to-end solutions – from business alignment to production and maintenance – a full team without the overhead.
+      </p>
+
+      <!-- PARTNER LINKS -->
+      <a href="#daniel" class="partner-link">
+        <div class="partner-name">Daniel Vainsencher | PhD</div>
+        <div class="partner-role">AI, ML, and Optimization Consultant</div>
+      </a>
+
+      <a href="#gil" class="partner-link">
+        <div class="partner-name">Gil Steiner</div>
+        <div class="partner-role">Senior Full Stack Developer</div>
+      </a>
+
+      <!-- FULL PROFILES -->
+      <div id="daniel" class="partner-profile">
+        <div class="profile-header">
+          <img src="daniel-photo.jpg" alt="Daniel Vainsencher" class="profile-photo">
+          <div class="profile-info">
+            <h2 class="profile-name">Daniel Vainsencher | PhD</h2>
+            <div class="profile-role">AI, ML, and Optimization Consultant</div>
+            <div class="profile-linkedin">
+              <a href="https://www.linkedin.com/in/danielvainsencher/" target="_blank">
+                linkedin.com/in/danielvainsencher
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="profile-bio">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <br><br><br><br>
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </div>
+      </div>
+
+      <div id="gil" class="partner-profile">
+        <div class="profile-header">
+          <img src="gil-photo.jpg" alt="Gil Steiner" class="profile-photo">
+          <div class="profile-info">
+            <h2 class="profile-name">Gil Steiner</h2>
+            <div class="profile-role">Senior Full Stack Developer</div>
+            <div class="profile-linkedin">
+              <a href="https://www.linkedin.com/in/gil-steiner/" target="_blank">
+                linkedin.com/in/gil-steiner
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="profile-bio">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <br><br><br><br>
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </div>
+      </div>
+
+      <div style="height:12mm;"></div>
+
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const btn = document.querySelector(".meeting-button");
+
+      function blinkAll(){
+        if (btn) btn.classList.add("blink-now");
+        setTimeout(() => {
+          if (btn) btn.classList.remove("blink-now");
+        }, 1200);
+      }
+
+      setTimeout(() => {
+        blinkAll();
+        setInterval(blinkAll, 15000);
+      }, 10000);
+    });
+  </script>
+
+</body>
+</html>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
 
