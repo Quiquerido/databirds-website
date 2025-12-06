@@ -66,7 +66,7 @@
     .logo {
       width:100%;
       height:100%;
-      object-fit:cover; /* SAFER ACROSS DEVICES */
+      object-fit:cover;
       display:block;
     }
 
@@ -294,9 +294,30 @@
     }
 
   </style>
+  <link rel="stylesheet" href="mobile.css">
 </head>
 
 <body>
+
+  <!-- MOBILE ELEMENTS -->
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html">About</a>
+    <a href="birds.html">BIRDS Framework</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="nav-cta">Book a Meeting</a>
+  </nav>
+
+  <div class="mobile-tagline">TRANSFORMING DATA INTO BUSINESS VALUE</div>
+  <!-- END MOBILE ELEMENTS -->
 
   <div class="top-bar"></div>
 
@@ -379,12 +400,23 @@
         setInterval(blinkAll, 15000);
       }, 10000);
     });
+
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      const hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
   </script>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="mobile-cta">Book a Meeting</a>
 
 </body>
 </html>
-
-
-
-
-

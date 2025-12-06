@@ -1,0 +1,416 @@
+/* ============================================================
+   DATABIRDS.AI - MOBILE RESPONSIVE STYLES
+   Breakpoint: 768px and below
+   ============================================================ */
+
+@media screen and (max-width: 768px) {
+
+  /* ============================================================
+     CSS VARIABLE OVERRIDES
+     ============================================================ */
+  :root {
+    --top-bar-height: 60px;
+    --mobile-padding: 20px;
+  }
+
+  /* ============================================================
+     BASE RESET FOR MOBILE
+     ============================================================ */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  /* ============================================================
+     TOP BAR
+     ============================================================ */
+  .top-bar {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+  }
+
+  /* ============================================================
+     LOGO
+     ============================================================ */
+  .logo-wrapper {
+    position: fixed;
+    top: 8px;
+    left: 15px;
+    width: 160px;
+    height: 53px;
+    z-index: 10001;
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ============================================================
+     HAMBURGER MENU BUTTON
+     ============================================================ */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10002;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #0b1b28;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* ============================================================
+     NAVIGATION - DESKTOP (HIDE)
+     ============================================================ */
+  .nav-links {
+    display: none;
+  }
+
+  /* ============================================================
+     MOBILE NAVIGATION MENU
+     ============================================================ */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #f2f2f2;
+    z-index: 9999;
+    padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-nav.active {
+    display: block;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 15px 25px;
+    color: #0b1b28;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(11, 27, 40, 0.1);
+    transition: background 0.2s ease;
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav a:hover,
+  .mobile-nav a:active {
+    background: rgba(11, 27, 40, 0.05);
+  }
+
+  .mobile-nav a.nav-cta {
+    background: #0b1b28;
+    color: #ffffff;
+    margin: 15px 20px 5px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none;
+  }
+
+  .mobile-nav a.nav-cta:hover,
+  .mobile-nav a.nav-cta:active {
+    background: #1f6f89;
+  }
+
+  /* ============================================================
+     HIDE DESKTOP-ONLY ELEMENTS
+     ============================================================ */
+  .right-bar,
+  .right-bar-text,
+  .birds-header,
+  .birds-item,
+  .overlay-birds,
+  .overlay-transform,
+  .top-triangle,
+  .bottom-triangle,
+  .photo-triangle,
+  .meeting-button {
+    display: none !important;
+  }
+
+  /* ============================================================
+     MOBILE TAGLINE
+     ============================================================ */
+  .mobile-tagline {
+    display: block;
+    background: #1f6f89;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 9998;
+    box-sizing: border-box;
+  }
+
+  /* ============================================================
+     CONTENT AREA
+     ============================================================ */
+  .content-area {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 110px; /* top bar + tagline */
+    margin-bottom: 80px; /* space for sticky button */
+    padding: 20px;
+    overflow-y: visible;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ============================================================
+     HOME PAGE - PHOTO BLOCK
+     ============================================================ */
+  .photo-block {
+    margin: 0 auto 25px auto;
+    width: 140px;
+    text-align: center;
+  }
+
+  .photo-block img {
+    width: 140px;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* ============================================================
+     HOME PAGE - INTRO TEXT
+     ============================================================ */
+  .intro-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* ============================================================
+     ARTICLE / CONTENT WRAPPERS
+     ============================================================ */
+  .article-wrapper,
+  .about-wrapper,
+  .partners-wrapper,
+  .contact-wrapper {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* ============================================================
+     TYPOGRAPHY ADJUSTMENTS
+     ============================================================ */
+  .article-title-main,
+  .about-title,
+  .partners-title,
+  .contact-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .article-title-sub {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .article-body p,
+  .about-body p,
+  .partners-intro,
+  .contact-intro {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  /* ============================================================
+     IMAGES IN CONTENT
+     ============================================================ */
+  .article-body img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  /* ============================================================
+     PARTNERS PAGE
+     ============================================================ */
+  .partner-link {
+    padding: 12px 0;
+  }
+
+  .partner-name {
+    font-size: 16px;
+  }
+
+  .partner-role {
+    font-size: 14px;
+  }
+
+  .partner-profile {
+    padding-top: 20px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-info {
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .profile-role {
+    font-size: 14px;
+  }
+
+  .profile-linkedin {
+    font-size: 14px;
+  }
+
+  .profile-bio {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  /* ============================================================
+     CONTACT PAGE
+     ============================================================ */
+  .contact-item {
+    margin: 20px 0;
+    font-size: 15px;
+  }
+
+  .contact-label {
+    font-size: 14px;
+  }
+
+  /* ============================================================
+     STICKY BOTTOM CTA BUTTON
+     ============================================================ */
+  .mobile-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #0b1b28;
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    z-index: 10000;
+    box-sizing: border-box;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-cta:hover,
+  .mobile-cta:active {
+    background: #1f6f89;
+  }
+
+  /* ============================================================
+     REVEAL ANIMATIONS - ENSURE VISIBILITY
+     ============================================================ */
+  .reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* ============================================================
+     PROJECT PAGE - WAFER LOGO IN TITLE
+     ============================================================ */
+  .article-title-main img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+}
+
+/* ============================================================
+   HIDE MOBILE-ONLY ELEMENTS ON DESKTOP
+   ============================================================ */
+@media screen and (min-width: 769px) {
+  .hamburger,
+  .mobile-nav,
+  .mobile-tagline,
+  .mobile-cta {
+    display: none !important;
+  }
+}
