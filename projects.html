@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quique | Data Scientist & Business Leader</title>
+  <title>Projects | Quique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -289,9 +289,30 @@
       animation:softBlinkTwice 1s ease-in-out;
     }
   </style>
+  <link rel="stylesheet" href="mobile.css">
 </head>
 
 <body>
+
+  <!-- MOBILE ELEMENTS -->
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html">About</a>
+    <a href="birds.html">BIRDS Framework</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="nav-cta">Book a Meeting</a>
+  </nav>
+
+  <div class="mobile-tagline">TRANSFORMING DATA INTO BUSINESS VALUE</div>
+  <!-- END MOBILE ELEMENTS -->
 
   <div class="top-bar"></div>
 
@@ -433,7 +454,23 @@
         setInterval(blinkAll, 15000);
       }, 10000);
     });
+
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      const hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
   </script>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="mobile-cta">Book a Meeting</a>
 
 </body>
 </html>
