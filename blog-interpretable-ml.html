@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blog | Quique</title>
+  <title>Interpretable ML vs. Black-Box Magic | Quique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -231,49 +231,43 @@
 
     .content-area::-webkit-scrollbar { width:0; height:0; }
 
-    .blog-wrapper {
+    .article-wrapper {
       margin-top:8mm;
       margin-left:27mm;
       margin-right:20mm;
       max-width:60ch;
     }
 
-    .blog-title {
+    .article-title {
       font-size:6mm;
       font-weight:600;
       letter-spacing:0.24mm;
       margin:0 0 6mm 0;
     }
 
-    .blog-intro {
-      font-size:4mm;
-      line-height:1.55;
+    .article-meta {
+      font-size:3.5mm;
+      opacity:0.7;
       margin:0 0 8mm 0;
     }
 
-    .blog-post-link {
-      display:block;
-      margin:4mm 0;
-      padding:4mm 0;
+    .article-body p {
+      font-size:4mm;
+      line-height:1.55;
+      margin:0 0 4mm 0;
+      text-align:justify;
+    }
+
+    .back-link {
+      display:inline-block;
+      margin-top:8mm;
+      color:#fbc02d;
       text-decoration:none;
-      color:#ffffff;
-      border-bottom:1px solid rgba(255,255,255,0.15);
+      font-size:4mm;
       transition:opacity 0.2s;
     }
 
-    .blog-post-link:hover {
-      opacity:0.7;
-    }
-
-    .blog-post-title {
-      font-size:4mm;
-      font-weight:400;
-      color:#fbc02d;
-      margin-bottom:2mm;
-    }
-
-    .blog-post-date {
-      font-size:3.5mm;
+    .back-link:hover {
       opacity:0.7;
     }
 
@@ -349,23 +343,21 @@
   </a>
 
   <div class="content-area">
-    <div class="blog-wrapper">
+    <div class="article-wrapper">
 
-      <h1 class="blog-title" style="color:#fbc02d;">Blog</h1>
+      <h1 class="article-title" style="color:#fbc02d;">Interpretable ML vs. Black-Box Magic</h1>
 
-      <p class="blog-intro">
-        Thoughts on business-first data science, interpretable machine learning, and bridging the gap between technical rigor and business impact.
-      </p>
+      <p class="article-meta">Coming Soon</p>
 
-      <a href="blog-birds.html" class="blog-post-link">
-        <div class="blog-post-title">The BIRDS Framework: Where Does Insight Really Live?</div>
-        <div class="blog-post-date">December 7, 2025</div>
-      </a>
+      <div class="article-body">
 
-      <a href="blog-interpretable-ml.html" class="blog-post-link">
-        <div class="blog-post-title">Interpretable ML vs. Black-Box Magic</div>
-        <div class="blog-post-date">Coming Soon</div>
-      </a>
+        <p>
+          Coming soon: When do interpretable models outperform black boxes, and what do we really mean by interpretable?
+        </p>
+
+      </div>
+
+      <a href="blog.html" class="back-link">← Back to Blog</a>
 
       <div style="height:12mm;"></div>
 
