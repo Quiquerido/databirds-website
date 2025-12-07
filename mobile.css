@@ -225,7 +225,7 @@
     border-radius: 12px;
     margin: 0 auto;
     display: block;
-    filter: saturate(0.7);
+    filter: saturate(0.6);
   }
 
   /* ============================================================
