@@ -12,16 +12,649 @@
   gtag('config', 'G-4C8NFT5X66');
 </script>
   
-  <title>Redirecting…</title>
+  <title>The BIRDS Framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    // Open Calendly in a NEW TAB, then return user to home
-    window.onload = function() {
-      window.open("https://calendly.com/quique-databirds/30min", "_blank");
-      window.location.href = "index.html";   // or "home.html" if you prefer
-    };
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --page-bg:#0b1b28;
+      --accent:#f2f2f2;
+      --font-main:'Poppins',sans-serif;
+
+      --top-bar-height:12mm;
+
+      --logo-width:67.5mm;
+      --logo-height:22.5mm;
+      --logo-top-offset:5mm;
+      --logo-left-offset:19mm;
+
+      --nav-top-offset:15mm;
+      --nav-left-offset:110mm;
+      --nav-gap:18mm;
+
+      --right-bar-width:75mm;
+
+      --triangle-color:#1f6f89;
+    }
+
+    html, body {
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:var(--font-main);
+      color:#fff;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .top-bar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:var(--top-bar-height);
+      background:var(--accent);
+      z-index:9999999;
+    }
+
+    .logo-wrapper {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--logo-top-offset));
+      left:var(--logo-left-offset);
+      width:var(--logo-width);
+      height:var(--logo-height);
+      z-index:9999999;
+    }
+
+    .logo {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .logo-overlay {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:transparent;
+      cursor:pointer;
+      z-index:10;
+    }
+
+    .nav-links {
+      position:fixed;
+      top:calc(var(--top-bar-height) + var(--nav-top-offset));
+      left:calc(var(--nav-left-offset) - 15mm);
+      display:flex;
+      gap:var(--nav-gap);
+      z-index:9999999;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:#ffffff;
+      font-size:1.12rem;
+      font-weight:400;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .link-about     { left:calc(-3mm + 9mm); }
+    .link-projects  { left:calc(-6mm + 9mm); }
+    .link-partners  { left:calc(-9mm + 9mm); }
+    .link-blog      { left:calc(-12mm + 9mm); }
+    .link-contact   { left:calc(-15mm + 9mm); }
+
+    .nav-links a:hover { opacity:0.65; }
+
+    .right-bar {
+      position:fixed;
+      top:0;
+      right:0;
+      width:var(--right-bar-width);
+      height:100vh;
+      background:var(--accent);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .right-bar-text {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.34mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .overlay-transform {
+      position:fixed;
+      top:23.3mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:12.1mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .birds-header {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:580;
+      line-height:1.4;
+      letter-spacing:0.24mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    .birds-item {
+      position:fixed;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      color:#0b1b28;
+      font-size:4.3mm;
+      font-weight:400;
+      line-height:1.4;
+      letter-spacing:0.13mm;
+      text-align:left;
+      z-index:9999999;
+      pointer-events:none;
+    }
+
+    #birds-1 { top:70.75mm; }
+    #birds-2 { top:80.50mm; }
+    #birds-3 { top:90.25mm; }
+    #birds-4 { top:100.00mm; }
+    #birds-5 { top:109.75mm; }
+
+    .overlay-birds {
+      position:fixed;
+      top:61mm;
+      right:12.5mm;
+      width:calc(var(--right-bar-width) - 20mm);
+      height:54.75mm;
+      background:transparent;
+      cursor:pointer;
+      z-index:999999;
+    }
+
+    .meeting-button {
+      position:fixed;
+      top:121.5mm;
+      right:13mm;
+      height:12mm;
+      line-height:12mm;
+      padding:0 8mm;
+      background:#ffffff;
+      color:#0b1b28;
+      border-radius:3mm;
+      border:1px solid #0b1b28;
+      font-size:0.99rem;
+      font-weight:600;
+      text-transform:uppercase;
+      text-decoration:none;
+      letter-spacing:0.05em;
+      z-index:999999;
+      cursor:pointer;
+    }
+
+    .top-triangle {
+      position:fixed;
+      top:45mm;
+      right:0mm;
+      width:100mm;
+      height:5mm;
+      background:var(--triangle-color);
+      clip-path:polygon(100% 0, 0 50%, 100% 100%);
+      z-index:5;
+    }
+
+    .content-area {
+      position:fixed;
+      left:22mm;
+      top:43mm;
+      right:var(--right-bar-width);
+      bottom:0;
+      overflow-y:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      z-index:50;
+    }
+
+    .content-area::-webkit-scrollbar { width:0; height:0; }
+
+    .birds-wrapper {
+      margin-top:8mm;
+      margin-left:27mm;
+      margin-right:20mm;
+      max-width:60ch;
+    }
+
+    .birds-title {
+      font-size:6mm;
+      font-weight:600;
+      letter-spacing:0.24mm;
+      margin:0 0 6mm 0;
+      color:#fbc02d;
+    }
+
+    .birds-intro {
+      font-size:4mm;
+      line-height:1.55;
+      margin:0 0 8mm 0;
+      text-align:justify;
+      -webkit-hyphens:auto;
+      -ms-hyphens:auto;
+      hyphens:auto;
+    }
+
+    .section-title {
+      font-size:5mm;
+      font-weight:600;
+      letter-spacing:0.2mm;
+      margin:10mm 0 4mm 0;
+      color:#fbc02d;
+    }
+
+    .section-intro {
+      font-size:4mm;
+      line-height:1.55;
+      margin:0 0 5mm 0;
+      text-align:justify;
+      -webkit-hyphens:auto;
+      -ms-hyphens:auto;
+      hyphens:auto;
+    }
+
+    .item {
+      margin:0 0 4mm 0;
+    }
+
+    .item-question {
+      font-size:4mm;
+      font-weight:600;
+      line-height:1.5;
+      margin:0 0 1mm 0;
+    }
+
+    .item-answer {
+      font-size:3.8mm;
+      font-weight:400;
+      line-height:1.5;
+      margin:0 0 0 5mm;
+      color:#cccccc;
+    }
+
+    .contact-line {
+      font-size:4mm;
+      line-height:1.55;
+      margin:10mm 0 0 0;
+    }
+
+    .contact-line a {
+      color:#fbc02d;
+      text-decoration:none;
+      font-weight:400;
+    }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(6mm);
+      transition:opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @keyframes softBlinkTwice{
+      0%{opacity:1;}25%{opacity:.4;}
+      50%{opacity:1;}75%{opacity:.4;}
+      100%{opacity:1;}
+    }
+    .blink-now{animation:softBlinkTwice 1s ease-in-out;}
+  </style>
+  <link rel="stylesheet" href="mobile.css">
 </head>
-<body></body>
+
+<body>
+
+  <!-- MOBILE ELEMENTS -->
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html">About</a>
+    <a href="birds.html">BIRDS Framework</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="nav-cta">Book a Meeting</a>
+  </nav>
+
+  <div class="mobile-tagline">TRANSFORMING DATA INTO BUSINESS VALUE</div>
+  <!-- END MOBILE ELEMENTS -->
+
+  <div class="top-bar"></div>
+
+  <div class="logo-wrapper">
+    <img src="logo.jpg" class="logo" alt="">
+    <a href="index.html" class="logo-overlay"></a>
+  </div>
+
+  <div class="nav-links">
+    <a href="about.html"     class="link-about">About</a>
+    <a href="projects.html"  class="link-projects">Projects</a>
+    <a href="partners.html"  class="link-partners">Partners</a>
+    <a href="blog.html"      class="link-blog">Blog</a>
+    <a href="contact.html"   class="link-contact">Contact</a>
+  </div>
+
+  <div class="right-bar"></div>
+  <div class="top-triangle"></div>
+
+  <div class="right-bar-text">
+    TRANSFORMING DATA<br>INTO BUSINESS VALUE
+  </div>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="overlay-transform"></a>
+  
+  <div class="birds-header">THE BIRDS FRAMEWORK</div>
+  <div id="birds-1" class="birds-item">Business Alignment</div>
+  <div id="birds-2" class="birds-item">Insight Discovery</div>
+  <div id="birds-3" class="birds-item">Real-World Modeling</div>
+  <div id="birds-4" class="birds-item">Decision Enablement</div>
+  <div id="birds-5" class="birds-item">Solution Scaling</div>
+  <a href="birds.html" class="overlay-birds"></a>
+
+  <a href="https://calendly.com/quique-databirds/30min"
+     target="_blank"
+     class="meeting-button">
+    BOOK A MEETING
+  </a>
+
+  <div class="content-area">
+    <div class="birds-wrapper">
+
+      <h1 class="birds-title reveal">The BIRDS Framework</h1>
+
+      <p class="birds-intro reveal">
+        When organizations pursue data science initiatives, "We need ML" is often the starting point – and the root of many project failures. It puts the solution before the problem, the tool before the goal. The BIRDS Framework starts somewhere else entirely.
+      </p>
+
+      <!-- B – Business Alignment -->
+      <h2 class="section-title reveal">B – Business Alignment</h2>
+
+      <div class="item reveal">
+        <p class="item-question">1. What are you trying to achieve?</p>
+        <p class="item-answer">The vision: strategic direction, desired future state</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">2. What's getting in the way?</p>
+        <p class="item-answer">The gap: current state and obstacles, friction, pain</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">3. What decisions or processes would improve?</p>
+        <p class="item-answer">The lever: where decision and action happen</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">4. How will we know it works?</p>
+        <p class="item-answer">Success criteria: measurable KPIs, agreed upon</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">5. What are the resources and constraints?</p>
+        <p class="item-answer">Reality check: timeline, budget, data, people, infrastructure</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">6. What solution directions might apply?</p>
+        <p class="item-answer">Hypotheses: refined through Insight Discovery and Modeling</p>
+      </div>
+
+      <!-- I – Insight Discovery -->
+      <h2 class="section-title reveal">I – Insight Discovery</h2>
+
+      <p class="section-intro reveal">
+        Many projects treat data exploration as a checkbox – a shallow step before the "real work" of modeling. Insight Discovery goes deeper: rigorous analysis that shapes direction before any modeling commitment.
+      </p>
+
+      <div class="item reveal">
+        <p class="item-question">1. What data is available and accessible?</p>
+        <p class="item-answer">The inventory: sources, systems, formats, ownership</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">2. What is the quality and reliability of the data?</p>
+        <p class="item-answer">The reality check: completeness, accuracy, consistency, freshness</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">3. What does exploratory analysis reveal?</p>
+        <p class="item-answer">Deep diagnostic: statistical structure, latent relationships, signal strength</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">4. Where do assumptions align or break?</p>
+        <p class="item-answer">Validation: what stakeholders believe vs. what the data shows</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">5. What insights emerge before any modeling?</p>
+        <p class="item-answer">Early wins: actionable findings that don't necessarily require ML</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">6. Is there a viable path forward?</p>
+        <p class="item-answer">The gate: enough signal, quality, and feasibility to proceed</p>
+      </div>
+
+      <!-- R – Real-World Modeling -->
+      <h2 class="section-title reveal">R – Real-World Modeling</h2>
+
+      <p class="section-intro reveal">
+        Models that shine in notebooks often fail in production. Real-World Modeling means building for the environment that exists, not ideal conditions. Constraints aren't obstacles, they're design requirements.
+      </p>
+
+      <div class="item reveal">
+        <p class="item-question">1. What modeling approaches fit the problem and constraints?</p>
+        <p class="item-answer">The match: algorithm selection driven by data and production realities</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">2. What technical metrics align with business success?</p>
+        <p class="item-answer">The translation: connecting model performance to business KPIs</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">3. How do we balance complexity with interpretability?</p>
+        <p class="item-answer">The tradeoff: accuracy matters, but so does trust and explainability</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">4. What does production deployment require?</p>
+        <p class="item-answer">The environment: infrastructure, integration points, maintenance burden</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">5. How do we validate before going live?</p>
+        <p class="item-answer">The proof: testing against real conditions, not just holdout sets</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">6. What happens when the model fails or degrades?</p>
+        <p class="item-answer">The fallback: graceful failure modes, human override paths</p>
+      </div>
+
+      <!-- D – Decision Enablement -->
+      <h2 class="section-title reveal">D – Decision Enablement</h2>
+
+      <p class="section-intro reveal">
+        A model that doesn't change decisions is an expensive report. Decision Enablement bridges the gap between "it works" and "it's used" – integrating outputs into workflows where action actually happens.
+      </p>
+
+      <div class="item reveal">
+        <p class="item-question">1. How do outputs reach decision-makers?</p>
+        <p class="item-answer">The delivery: dashboards, alerts, APIs, reports; format matched to audience</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">2. How does it integrate into existing workflows?</p>
+        <p class="item-answer">The fit: meeting people where they work, not asking them to change</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">3. What training or change management is needed?</p>
+        <p class="item-answer">The adoption: tools only work if people trust and use them</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">4. How do we close the feedback loop?</p>
+        <p class="item-answer">The signal: capturing whether decisions improved, not just whether model ran</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">5. What happens when users disagree with the model?</p>
+        <p class="item-answer">The override: clear paths for human judgment, not blind automation</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">6. How do we measure real-world impact?</p>
+        <p class="item-answer">The proof: business outcomes, not just model metrics</p>
+      </div>
+
+      <!-- S – Solution Scaling -->
+      <h2 class="section-title reveal">S – Solution Scaling</h2>
+
+      <p class="section-intro reveal">
+        Some projects end at deployment. Solution Scaling ensures value compounds through monitoring, maintenance, and extension to adjacent problems and opportunities.
+      </p>
+
+      <div class="item reveal">
+        <p class="item-question">1. What documentation and knowledge transfer is needed?</p>
+        <p class="item-answer">The handoff: ensuring the solution lives beyond the project team</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">2. How do we monitor performance over time?</p>
+        <p class="item-answer">The watch: detecting drift and changing conditions before they hurt</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">3. What maintenance does the solution require?</p>
+        <p class="item-answer">The upkeep: retraining schedules, data pipeline health</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">4. How do we extend to adjacent problems and opportunities?</p>
+        <p class="item-answer">The leverage: patterns, infrastructure, and learnings that apply elsewhere</p>
+      </div>
+
+      <div class="item reveal">
+        <p class="item-question">5. How does this build organizational capability?</p>
+        <p class="item-answer">The compound: not just solving one problem, but raising the baseline</p>
+      </div>
+
+      <!-- Contact -->
+      <p class="contact-line reveal">
+        Contact me to learn more at
+        <a href="mailto:quique@databirds.ai?bcc=quique.feldfogel@gmail.com">quique@databirds.ai</a>
+      </p>
+
+      <div style="height:12mm;"></div>
+
+    </div>
+  </div>
+
+  <script>
+    const content = document.querySelector('.content-area');
+
+    window.addEventListener('wheel', (e) => {
+      content.scrollTop += e.deltaY;
+    }, { passive:true });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') content.scrollTop += 40;
+      if (e.key === 'ArrowUp')   content.scrollTop -= 40;
+      if (e.key === 'PageDown')  content.scrollTop += 400;
+      if (e.key === 'PageUp')    content.scrollTop -= 400;
+      if (e.key === ' ')         content.scrollTop += 400;
+    });
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    },{
+      root: document.querySelector('.content-area'),
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.reveal').forEach((el, index)=>{
+      el.style.transitionDelay = (index * 80) + "ms";
+      observer.observe(el);
+    });
+
+    window.addEventListener("load", () => {
+      const btn = document.querySelector(".meeting-button");
+
+      function blinkAll(){
+        if (btn) btn.classList.add("blink-now");
+        setTimeout(() => {
+          if (btn) btn.classList.remove("blink-now");
+        }, 1200);
+      }
+
+      setTimeout(() => {
+        blinkAll();
+        setInterval(blinkAll, 15000);
+      }, 10000);
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      const hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
+  </script>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="mobile-cta">Book a Meeting</a>
+
+</body>
 </html>
