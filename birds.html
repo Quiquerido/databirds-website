@@ -628,8 +628,8 @@
       });
     },{
       root: document.querySelector('.content-area'),
-      threshold: 0.05
-    });
+      threshold: 0,
+      rootMargin: '23px 0px 0px 0px'    });
 
     document.querySelectorAll('.reveal').forEach((el, index)=>{
       el.style.transitionDelay = (index * 80) + "ms";
