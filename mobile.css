@@ -436,6 +436,62 @@
     font-size: 14px;
   }
 
+  /* ============================================================
+     BIRDS FRAMEWORK PAGE
+     ============================================================ */
+  .birds-wrapper {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .birds-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .birds-intro {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    margin-bottom: 25px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  .item {
+    margin-bottom: 12px;
+  }
+
+  .item-question {
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .item-answer {
+    font-size: 14px;
+    margin-left: 0;
+  }
+
+  .contact-line {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
 }
 
 /* ============================================================
