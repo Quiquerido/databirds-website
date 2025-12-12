@@ -23,7 +23,7 @@
 
       --nav-top-offset:15mm;
       --nav-left-offset:110mm;
-      --nav-gap:18mm;
+      --nav-gap:12mm;
 
       --right-bar-width:75mm;
 
@@ -96,10 +96,11 @@
     }
 
     .link-about     { left:calc(-3mm + 9mm); }
-    .link-projects  { left:calc(-6mm + 9mm); }
-    .link-partners  { left:calc(-9mm + 9mm); }
-    .link-blog      { left:calc(-12mm + 9mm); }
-    .link-contact   { left:calc(-15mm + 9mm); }
+    .link-method    { left:calc(-6mm + 9mm); }
+    .link-projects  { left:calc(-9mm + 9mm); }
+    .link-partners  { left:calc(-12mm + 9mm); }
+    .link-blog      { left:calc(-15mm + 9mm); }
+    .link-contact   { left:calc(-18mm + 9mm); }
 
     .nav-links a:hover { opacity:0.65; }
 
