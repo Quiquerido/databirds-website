@@ -2,8 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4C8NFT5X66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4C8NFT5X66');
+</script>
+  
   <title>Quique | Data Scientist & Business Leader</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Can you transform complex data into measurable business value? You can! Learn more about the BIRDS Framework.">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://databirds.ai/">
+  <meta property="og:title" content="Business-First Data Science Consulting">
+  <meta property="og:description" content="Can you transform complex data into measurable business value? You can! Learn more about the BIRDS Framework.">
+  <meta property="og:image" content="https://databirds.ai/og-logo.png">
+  <meta property="og:site_name" content="DataBirds">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business-First Data Science Consulting">
+  <meta name="twitter:description" content="Can you transform complex data into measurable business value? You can! Learn more about the BIRDS Framework.">
+  <meta name="twitter:image" content="https://databirds.ai/og-logo.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -24,7 +49,7 @@
 
       --nav-top-offset:15mm;
       --nav-left-offset:110mm;
-      --nav-gap:18mm;
+      --nav-gap:12mm;
 
       --right-bar-width:75mm;
 
@@ -66,7 +91,7 @@
     .logo {
       width:100%;
       height:100%;
-      object-fit:cover; /* SAFER ACROSS DEVICES */
+      object-fit:cover;
       display:block;
     }
 
@@ -93,17 +118,18 @@
     .nav-links a {
       text-decoration:none;
       color:#ffffff;
-      font-size:1.12rem;
+      font-size:1.0rem;
       font-weight:400;
       cursor:pointer;
       position:relative;
     }
 
     .link-about     { left:calc(-3mm + 9mm); }
-    .link-projects  { left:calc(-6mm + 9mm); }
-    .link-partners  { left:calc(-9mm + 9mm); }
-    .link-blog      { left:calc(-12mm + 9mm); }
-    .link-contact   { left:calc(-15mm + 9mm); }
+    .link-method    { left:calc(-6mm + 9mm); }
+    .link-projects  { left:calc(-9mm + 9mm); }
+    .link-partners  { left:calc(-12mm + 9mm); }
+    .link-blog      { left:calc(-15mm + 9mm); }
+    .link-contact   { left:calc(-18mm + 9mm); }
 
     .right-bar {
       position:fixed;
@@ -294,9 +320,30 @@
     }
 
   </style>
+  <link rel="stylesheet" href="mobile.css">
 </head>
 
 <body>
+
+  <!-- MOBILE ELEMENTS -->
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="about.html">About</a>
+    <a href="birds.html">Method</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="nav-cta">Book a Meeting</a>
+  </nav>
+
+  <div class="mobile-tagline">TRANSFORMING DATA INTO BUSINESS VALUE</div>
+  <!-- END MOBILE ELEMENTS -->
 
   <div class="top-bar"></div>
 
@@ -307,6 +354,7 @@
 
   <div class="nav-links">
     <a href="about.html"     class="link-about">About</a>
+    <a href="birds.html" class="link-method">Method</a>
     <a href="projects.html"  class="link-projects">Projects</a>
     <a href="partners.html"  class="link-partners">Partners</a>
     <a href="blog.html"      class="link-blog">Blog</a>
@@ -379,12 +427,23 @@
         setInterval(blinkAll, 15000);
       }, 10000);
     });
+
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      const hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+        document.querySelector('.hamburger').classList.remove('active');
+      });
+    });
   </script>
+
+  <a href="https://calendly.com/quique-databirds/30min" target="_blank" class="mobile-cta">Book a Meeting</a>
 
 </body>
 </html>
-
-
-
-
-
